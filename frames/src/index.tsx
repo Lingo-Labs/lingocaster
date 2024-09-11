@@ -27,17 +27,18 @@ const { Image, Text, vars } = createSystem({
       }
     ],
   },
+  colors: {
+    white: '#FFFFFF',
+    green: '#58CC02',
+    blue: '#2e6cbf'
+  }
 })
 
 export const app = new Frog({
-  // Supply a Hub to enable frame verification.
   hub: neynar({ apiKey: 'NEYNAR_FROG_FM' }),
   title: 'Fruit Machine',
   ui: { vars }
 })
-
-// Add a state variable for the counter
-// const [counter, setCounter] = useState(0)
 
 app.use('/*', serveStatic({ root: './public' }))
 
@@ -97,34 +98,137 @@ app.frame('/', (c) => {
           }}
         >
           <Text size="20" font="manrope" weight="400">Learn a new language, earn rewards with streaks, & bet against friends!</Text>
-         
-        </div>
 
-        {/* Start text */}
-        {/* <div
-          style={{
-            display: 'flex',
-            color: 'white',
-            fontSize: '24px',
-            fontWeight: 'bold',
-          }}
-        >
-          Start
-        </div> */}
+        </div>
       </div>
     ),
     intents: [
-      // <Button action="/increment" value="10">Learn More</Button>,
-      <Button action="/translation">Start!</Button>,
+      <Button action="/translation">Start learning!</Button>,
     ],
   })
 })
 
 app.frame('/translation', (c) => {
-  // const { buttonValue, inputText, status } = c
-  // const fruit = inputText || buttonValue
   return c.res({
-    action: '/',
+    action: '/phrases',
+    image: (
+      <div
+        style={{
+          alignItems: 'flex-start',
+          background: '#58CC02',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <Text
+            font="default"
+            size="32"
+            weight="700"
+            color="white"
+          >
+            Translation:
+          </Text>
+        </div>
+
+        {/* White rounded rectangle */}
+        <div
+          style={{
+            display: 'flex',
+            background: 'white',
+            borderRadius: '15px',
+            lineHeight: '1',
+            flexGrow: 1,
+            padding: '20px',
+            width: '100%',
+          }}
+        >
+          {/* Blue sample text */}
+          <div style={{ display: 'flex', color: 'black' }}>
+            <Text
+              font="default"
+              size="20"
+              color="blue"
+            >
+              Sample translation text goes here. This is where the translated content will be displayed.
+            </Text>
+          </div>
+        </div>
+      </div>
+    ),
+    intents: [
+      <Button action="/">Back</Button>,
+      <Button>Next</Button>,
+    ],
+  })
+})
+
+app.frame('/phrases', (c) => {
+  return c.res({
+    image: (
+      <div
+        style={{
+          alignItems: 'flex-start',
+          background: '#58CC02',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <Text
+            font="default"
+            size="32"
+            weight="700"
+            color="white"
+          >
+            Here's what each phrase means:
+          </Text>
+        </div>
+
+        {/* White rounded rectangle */}
+        <div
+          style={{
+            display: 'flex',
+            background: 'white',
+            borderRadius: '15px',
+            lineHeight: '1',
+            flexGrow: 1,
+            padding: '20px',
+            width: '100%',
+          }}
+        >
+          {/* Blue sample text */}
+          <div style={{ display: 'flex', color: 'black' }}>
+            <Text
+              font="default"
+              size="20"
+              color="blue"
+            >
+              Sample translation text goes here. This is where the translated content will be displayed.
+            </Text>
+          </div>
+        </div>
+      </div>
+    ),
+    intents: [
+      <Button action="/translation">Back</Button>,
+      <Button action="/quiztime">Next</Button>,
+    ],
+  })
+})
+
+app.frame('/quiztime', (c) => {
+  return c.res({
     image: (
       <div
         style={{
@@ -133,74 +237,103 @@ app.frame('/translation', (c) => {
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
-          flexWrap: 'nowrap',
           height: '100%',
-          justifyContent: 'center',
-          textAlign: 'center',
           width: '100%',
+          padding: '40px',
+          justifyContent: 'center',
         }}
       >
-        {/* Add counter display */}
-        <div style={{ display: 'flex', position: 'absolute', top: 10, right: 10, color: 'white', fontSize: 24 }}>
-          {/* Counter: {counter} */}
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '8px' }}>
+          <Text
+            font="default"
+            size="64"
+            weight="700"
+            color="white"
+          >
+            Quiz Time!
+          </Text>
         </div>
-        {/* <div
-          style={{
-            color: 'white',
-            fontSize: 60,
-            fontStyle: 'normal',
-            letterSpacing: '-0.025em',
-            lineHeight: 1.4,
-            marginTop: 30,
-            padding: '0 120px',
-            whiteSpace: 'pre-wrap',
-          }}
+
+        {/* Subtitle */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+        <Text
+          font="default"
+          size="24"
+          weight="400"
+          color="white"
         >
-          {'Translation'}
-        </div> */}
+          6 questions
+        </Text>
+        </div>
       </div>
     ),
     intents: [
-      // <TextInput placeholder="Enter custom fruit..." />,
-      <Button action="/increment">Increment Counter</Button>,
-      <Button value="oranges">Oranges</Button>,
-      <Button value="bananas">Bananas</Button>,
-      <Button>Back to Home</Button>,
-      // <Button.Transaction target="/test">test</Button.Transaction>,
-      // status === 'response' && <Button.Reset>Reset</Button.Reset>,
+      <Button action="/phrases">Back</Button>,
+      <Button action="/q1">Start Quiz!</Button>,
     ],
   })
 })
 
-// Add a new frame for incrementing the counter
-app.frame('/increment', (c) => {
-  const { buttonValue } = c
 
-  // setCounter(counter + 1)
+app.frame('/q1', (c) => {
   return c.res({
-    action: '/',
+    action: '/q2',
     image: (
       <div
         style={{
-          alignItems: 'center',
-          background: 'linear-gradient(to right, #432889, #17101F)',
+          alignItems: 'flex-start',
+          background: '#58CC02',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
-          flexWrap: 'nowrap',
           height: '100%',
-          justifyContent: 'center',
-          textAlign: 'center',
           width: '100%',
+          padding: '40px',
         }}
       >
-        <div style={{ color: 'white', fontSize: 60 }}>
-          {`Counter Incremented! New Value: ${buttonValue}`}
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <Text
+            font="default"
+            size="24"
+            weight="700"
+            color="white"
+          >
+            What does ___ mean?
+          </Text>
+        </div>
+
+        {/* White rounded rectangle */}
+        <div
+          style={{
+            display: 'flex',
+            background: 'white',
+            borderRadius: '15px',
+            lineHeight: '1',
+            flexGrow: 1,
+            padding: '20px',
+            width: '100%',
+          }}
+        >
+          {/* Blue sample text */}
+          <div style={{ display: 'flex', color: 'black' }}>
+            <Text
+              font="default"
+              size="20"
+              color="blue"
+            >
+              Sample translation text goes here. This is where the translated content will be displayed.
+            </Text>
+          </div>
         </div>
       </div>
     ),
     intents: [
-      <Button>Back to Home</Button>,
+      <Button>a</Button>,
+      <Button>b</Button>,
+      <Button>c</Button>,
+      <Button>d</Button>,
     ],
   })
 })
