@@ -2,6 +2,7 @@ import { serveStatic } from '@hono/node-server/serve-static'
 import { Button, Frog, TextInput } from 'frog'
 import { devtools } from 'frog/dev'
 import { neynar } from 'frog/hubs'
+import { createSystem } from 'frog/ui'
 import { useState } from 'hono/jsx'
 
 export const app = new Frog({
@@ -10,8 +11,10 @@ export const app = new Frog({
   title: 'Fruit Machine',
 })
 
+const { Image } = createSystem({})
+
 // Add a state variable for the counter
-const [counter, setCounter] = useState(0)
+// const [counter, setCounter] = useState(0)
 
 app.use('/*', serveStatic({ root: './public' }))
 
@@ -31,9 +34,59 @@ app.frame('/', (c) => {
           justifyContent: 'center',
           textAlign: 'center',
           width: '100%',
+          padding: '20px',
         }}
       >
-      
+        {/* Circular image */}
+        <div style={{
+          borderRadius: '50%',
+          display: 'flex',
+          width: '100px',
+          height: '100px',
+          overflow: 'hidden',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Image src="/duolingo.png" />
+        </div>
+
+        {/* Title */}
+        <div
+          style={{
+            display: 'flex',
+            color: 'white',
+            fontSize: '36px',
+            fontWeight: 'bold',
+            marginBottom: '15px',
+          }}
+        >
+          Lingocaster
+        </div>
+
+        {/* Subtitle */}
+        <div
+          style={{
+            display: 'flex',
+            color: 'white',
+            fontSize: '18px',
+            marginBottom: '30px',
+            maxWidth: '80%',
+          }}
+        >
+          Learn a new language, earn rewards with streaks, & bet against friends!
+        </div>
+
+        {/* Start text */}
+        <div
+          style={{
+            display: 'flex',
+            color: 'white',
+            fontSize: '24px',
+            fontWeight: 'bold',
+          }}
+        >
+          Start
+        </div>
       </div>
     ),
     intents: [
@@ -44,8 +97,8 @@ app.frame('/', (c) => {
 })
 
 app.frame('/translation', (c) => {
-  const { buttonValue, inputText, status } = c
-  const fruit = inputText || buttonValue
+  // const { buttonValue, inputText, status } = c
+  // const fruit = inputText || buttonValue
   return c.res({
     action: '/',
     image: (
@@ -68,7 +121,7 @@ app.frame('/translation', (c) => {
       >
         {/* Add counter display */}
         <div style={{ display: 'flex', position: 'absolute', top: 10, right: 10, color: 'white', fontSize: 24 }}>
-          Counter: {counter}
+          {/* Counter: {counter} */}
         </div>
         {/* <div
           style={{
@@ -87,7 +140,7 @@ app.frame('/translation', (c) => {
       </div>
     ),
     intents: [
-      <TextInput placeholder="Enter custom fruit..." />,
+      // <TextInput placeholder="Enter custom fruit..." />,
       <Button action="/increment">Increment Counter</Button>,
       <Button value="oranges">Oranges</Button>,
       <Button value="bananas">Bananas</Button>,
@@ -102,7 +155,7 @@ app.frame('/translation', (c) => {
 app.frame('/increment', (c) => {
   const { buttonValue } = c
 
-  setCounter(counter + 1)
+  // setCounter(counter + 1)
   return c.res({
     action: '/',
     image: (
