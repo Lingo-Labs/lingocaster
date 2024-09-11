@@ -16,18 +16,13 @@ const [counter, setCounter] = useState(0)
 app.use('/*', serveStatic({ root: './public' }))
 
 app.frame('/', (c) => {
-  const { buttonValue, inputText, status } = c
-  const fruit = inputText || buttonValue
   return c.res({
-    action: '/increment',
+    action: '/translation',
     image: (
       <div
         style={{
           alignItems: 'center',
-          background:
-            status === 'response'
-              ? 'linear-gradient(to right, #432889, #17101F)'
-              : 'black',
+          background: 'black',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
@@ -38,33 +33,12 @@ app.frame('/', (c) => {
           width: '100%',
         }}
       >
-        {/* Add counter display */}
-        <div style={{ display: 'flex', position: 'absolute', top: 10, right: 10, color: 'white', fontSize: 24 }}>
-          {`Counter: ${counter}`}
-        </div>
-        {/* <div
-          style={{
-            color: 'white',
-            fontSize: 60,
-            fontStyle: 'normal',
-            letterSpacing: '-0.025em',
-            lineHeight: 1.4,
-            marginTop: 30,
-            padding: '0 120px',
-            whiteSpace: 'pre-wrap',
-          }}
-        >
-          {'Start'}
-        </div> */}
+      
       </div>
     ),
     intents: [
-      <TextInput placeholder="Enter custom fruit..." />,
-      <Button action="/increment">Increment Counter</Button>,
-      <Button value="oranges">Oranges</Button>,
-      <Button value="bananas">Bananas</Button>,
-      <Button.Link href="/test">Go to Test Frame</Button.Link>,
-      // status === 'response' && <Button.Reset>Reset</Button.Reset>,
+      <Button action="/increment" value="10">Learn More</Button>,
+      <Button>Start!</Button>,
     ],
   })
 })
@@ -126,6 +100,8 @@ app.frame('/translation', (c) => {
 
 // Add a new frame for incrementing the counter
 app.frame('/increment', (c) => {
+  const { buttonValue } = c
+
   setCounter(counter + 1)
   return c.res({
     action: '/',
@@ -145,7 +121,7 @@ app.frame('/increment', (c) => {
         }}
       >
         <div style={{ color: 'white', fontSize: 60 }}>
-          {`Counter Incremented! New Value: ${counter}`}
+          {`Counter Incremented! New Value: ${buttonValue}`}
         </div>
       </div>
     ),
@@ -154,5 +130,11 @@ app.frame('/increment', (c) => {
     ],
   })
 })
+
+app.castAction("/action", async (c) => {
+  return c.frame({ path: '/' })
+},
+  { name: "Lingo!", icon: "globe" }
+);
 
 devtools(app, { serveStatic })
