@@ -18,6 +18,7 @@ app.frame('/', (c) => {
   const { buttonValue, inputText, status } = c
   const fruit = inputText || buttonValue
   return c.res({
+    action: '/translation',
     image: (
       <div
         style={{
@@ -48,7 +49,7 @@ app.frame('/', (c) => {
             whiteSpace: 'pre-wrap',
           }}
         >
-          {'home'}
+          {'Start'}
         </div>
       </div>
     ),
@@ -63,7 +64,7 @@ app.frame('/', (c) => {
   })
 })
 
-app.frame('/test', (c) => {
+app.frame('/translation', (c) => {
   const { buttonValue, inputText, status } = c
   const fruit = inputText || buttonValue
   return c.res({
@@ -97,7 +98,7 @@ app.frame('/test', (c) => {
             whiteSpace: 'pre-wrap',
           }}
         >
-          {'test'}
+          {'Translation'}
         </div>
       </div>
     ),
