@@ -64,8 +64,8 @@ app.frame('/', (c) => {
         <div style={{
           borderRadius: '50%',
           display: 'flex',
-          width: '150px',
-          height: '150px',
+          width: '160px',
+          height: '160px',
           overflow: 'hidden',
           justifyContent: 'center',
           alignItems: 'center'
@@ -93,15 +93,15 @@ app.frame('/', (c) => {
             color: 'white',
             fontSize: '18px',
             marginBottom: '30px',
-            maxWidth: '80%',
+            maxWidth: '85%',
           }}
         >
-          <Text font="manrope" weight="400">Learn a new language, earn rewards with streaks, & bet against friends!</Text>
+          <Text size="20" font="manrope" weight="400">Learn a new language, earn rewards with streaks, & bet against friends!</Text>
          
         </div>
 
         {/* Start text */}
-        <div
+        {/* <div
           style={{
             display: 'flex',
             color: 'white',
@@ -110,12 +110,12 @@ app.frame('/', (c) => {
           }}
         >
           Start
-        </div>
+        </div> */}
       </div>
     ),
     intents: [
-      <Button action="/increment" value="10">Learn More</Button>,
-      <Button>Start!</Button>,
+      // <Button action="/increment" value="10">Learn More</Button>,
+      <Button action="/translation">Start!</Button>,
     ],
   })
 })
@@ -129,10 +129,7 @@ app.frame('/translation', (c) => {
       <div
         style={{
           alignItems: 'center',
-          background:
-            status === 'response'
-              ? 'linear-gradient(to right, #432889, #17101F)'
-              : 'black',
+          background: 'black',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
