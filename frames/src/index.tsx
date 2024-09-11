@@ -3,15 +3,38 @@ import { Button, Frog, TextInput } from 'frog'
 import { devtools } from 'frog/dev'
 import { neynar } from 'frog/hubs'
 import { createSystem } from 'frog/ui'
-import { useState } from 'hono/jsx'
+// import { useState } from 'hono/jsx'
+
+const { Image, Text, vars } = createSystem({
+  fonts: {
+    default: [
+      {
+        name: 'Poppins',
+        source: 'google',
+        weight: 400,
+      }
+    ],
+    manrope: [
+      {
+        name: 'Poppins',
+        source: 'google',
+        weight: 700,
+      },
+      {
+        name: 'Poppins',
+        source: 'google',
+        weight: 700,
+      }
+    ],
+  },
+})
 
 export const app = new Frog({
   // Supply a Hub to enable frame verification.
   hub: neynar({ apiKey: 'NEYNAR_FROG_FM' }),
   title: 'Fruit Machine',
+  ui: { vars }
 })
-
-const { Image } = createSystem({})
 
 // Add a state variable for the counter
 // const [counter, setCounter] = useState(0)
@@ -41,8 +64,8 @@ app.frame('/', (c) => {
         <div style={{
           borderRadius: '50%',
           display: 'flex',
-          width: '100px',
-          height: '100px',
+          width: '150px',
+          height: '150px',
           overflow: 'hidden',
           justifyContent: 'center',
           alignItems: 'center'
@@ -60,7 +83,7 @@ app.frame('/', (c) => {
             marginBottom: '15px',
           }}
         >
-          Lingocaster
+          <Text size="48" weight="700">Lingocaster</Text>
         </div>
 
         {/* Subtitle */}
@@ -73,7 +96,8 @@ app.frame('/', (c) => {
             maxWidth: '80%',
           }}
         >
-          Learn a new language, earn rewards with streaks, & bet against friends!
+          <Text font="manrope" weight="400">Learn a new language, earn rewards with streaks, & bet against friends!</Text>
+         
         </div>
 
         {/* Start text */}
