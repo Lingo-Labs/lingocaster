@@ -101,7 +101,7 @@ app.frame('/', (c) => {
             maxWidth: '85%',
           }}
         >
-          <Text size="20" font="manrope" weight="400">Learn a new language, earn rewards with streaks, & bet against friends!</Text>
+          <Text size="20" font="manrope" weight="400">Learn a new language, earn rewards with streaks, & challenge friends in PYUSD!</Text>
 
         </div>
       </div>
@@ -787,7 +787,7 @@ app.frame('/bet', (c) => {
               color="white"
               // style={{ textAlign: 'center', marginTop: '10px' }}
             >
-              Bet against a friend and set your own terms in PYUSD!
+              Challenge a friend and set your own terms in PYUSD!
 
             </Text>
             </div>
