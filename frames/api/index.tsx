@@ -31,7 +31,8 @@ const { Image, Text, vars } = createSystem({
   colors: {
     white: '#FFFFFF',
     green: '#58CC02',
-    blue: '#2e6cbf'
+    blue: '#2e6cbf',
+    red: '#892827'
   }
 })
 
@@ -653,42 +654,38 @@ app.frame('/points', (c) => {
 })
 
 app.frame('/streak', (c) => {
+  const num = 1;
   return c.res({
     image: (
       <div
         style={{
           alignItems: 'center',
-          background: 'black',
+          background: '#e9e0cb',
           backgroundSize: '100% 100%',
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
           width: '100%',
-          padding: '40px',
-          justifyContent: 'center',
+          padding: '20px',
         }}
       >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '8px' }}>
-          <Text
-            font="default"
-            size="64"
-            weight="700"
-            color="white"
-          >
-            5 day
-          </Text>
+        <div style={{
+          display: 'flex',
+          width: '100%',
+          overflow: 'hidden'
+        }}>
+          <Image src={`/${num}.png`} />
         </div>
 
         {/* Subtitle */}
-        <div style={{ display: 'flex', marginBottom: '10px' }}>
+        <div style={{ display: 'flex', marginTop: '35px' }}>
         <Text
           font="default"
           size="24"
-          weight="400"
-          color="white"
+          weight="500"
+          color="red"
         >
-          streak
+          {`You're on a ${num} day streak!`}
         </Text>
         </div>
       </div>
@@ -708,7 +705,7 @@ app.castAction("/action", async (c) => {
 
 // @ts-ignore
 const isEdgeFunction = typeof EdgeFunction !== "undefined";
-const isProduction = isEdgeFunction || (import.meta as any).env?.MODE !== "development";
+const isProduction = isEdgeFunction || import.meta.env?.MODE !== "development";
 devtools(app, isProduction ? { assetsPath: "/.frog" } : { serveStatic });
 
 export const GET = handle(app);
