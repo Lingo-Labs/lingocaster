@@ -1,16 +1,19 @@
 {
-  "name": "frames",
+  "name": "lingocaster",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "frog dev"
+    "build": "frog vercel-build",
+    "dev": "frog dev",
+    "deploy": "vercel"
   },
   "dependencies": {
-    "@hono/node-server": "latest",
+    "@neynar/nodejs-sdk": "^1.16.1",
     "frog": "latest",
     "hono": "^4"
   },
   "devDependencies": {
-    "typescript": "latest"
+    "@types/bun": "latest",
+    "bun": "latest"
   }
 }
