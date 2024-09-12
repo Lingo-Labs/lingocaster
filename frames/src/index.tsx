@@ -555,7 +555,7 @@ app.frame('/q5', (c) => {
             weight="700"
             color="white"
           >
-            The sky is always blue.
+            The product of 2 and 2 is 3.
           </Text>
         </div>
 
@@ -587,6 +587,101 @@ app.frame('/q5', (c) => {
     intents: [
       <Button value="true">True</Button>,
       <Button value="false">False</Button>,
+    ],
+  })
+})
+
+app.frame('/points', (c) => {
+  return c.res({
+    image: (
+      <div
+        style={{
+          alignItems: 'center',
+          background: 'black',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+          justifyContent: 'center',
+          lineHeight: '0.9',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex' }}>
+          <Text
+            font="default"
+            size="64"
+            weight="700"
+            color="white"
+          >
+            +500
+          </Text>
+        </div>
+
+        {/* Subtitle */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+        <Text
+          font="default"
+          size="24"
+          weight="400"
+          color="white"
+        >
+          points!
+        </Text>
+        </div>
+      </div>
+    ),
+    intents: [
+      <Button action="/streak">Next</Button>,
+    ],
+  })
+})
+
+app.frame('/streak', (c) => {
+  return c.res({
+    image: (
+      <div
+        style={{
+          alignItems: 'center',
+          background: 'black',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+          justifyContent: 'center',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '8px' }}>
+          <Text
+            font="default"
+            size="64"
+            weight="700"
+            color="white"
+          >
+            5 day
+          </Text>
+        </div>
+
+        {/* Subtitle */}
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+        <Text
+          font="default"
+          size="24"
+          weight="400"
+          color="white"
+        >
+          streak
+        </Text>
+        </div>
+      </div>
+    ),
+    intents: [
+      <Button action="/streak">Next</Button>,
     ],
   })
 })
