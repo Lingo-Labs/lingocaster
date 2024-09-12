@@ -36,7 +36,7 @@ const { Image, Text, vars } = createSystem({
 
 export const app = new Frog({
   hub: neynar({ apiKey: 'NEYNAR_FROG_FM' }),
-  title: 'Fruit Machine',
+  title: 'Lingocaster',
   ui: { vars }
 })
 
@@ -631,6 +631,16 @@ app.frame('/points', (c) => {
           points!
         </Text>
         </div>
+        {/* <div style={{ display: 'flex', marginTop: '50px' }}>
+        <Text
+          font="default"
+          size="24"
+          weight="400"
+          color="white"
+        >
+          You're now at 1000 points
+        </Text>
+        </div> */}
       </div>
     ),
     intents: [
@@ -681,7 +691,8 @@ app.frame('/streak', (c) => {
       </div>
     ),
     intents: [
-      <Button action="/streak">Next</Button>,
+      <Button.Link href="https://google.com">Mint today's NFT</Button.Link>,
+      <Button action="/bet">Next</Button>,
     ],
   })
 })
