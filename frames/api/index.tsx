@@ -1,6 +1,6 @@
-// import { serveStatic } from '@hono/node-server/serve-static'
+import { serveStatic } from '@hono/node-server/serve-static'
 import { Button, Frog } from 'frog'
-// import { devtools } from 'frog/dev'
+import { devtools } from 'frog/dev'
 import { neynar } from 'frog/hubs'
 import { createSystem } from 'frog/ui'
 import { handle } from 'frog/vercel'
@@ -707,9 +707,9 @@ app.castAction("/action", async (c) => {
 );
 
 // @ts-ignore
-// const isEdgeFunction = typeof EdgeFunction !== "undefined";
-// const isProduction = isEdgeFunction || import.meta.env?.MODE !== "development";
-// devtools(app, isProduction ? { assetsPath: "/.frog" } : { serveStatic });
+const isEdgeFunction = typeof EdgeFunction !== "undefined";
+const isProduction = isEdgeFunction || (import.meta as any).env?.MODE !== "development";
+devtools(app, isProduction ? { assetsPath: "/.frog" } : { serveStatic });
 
 export const GET = handle(app);
 export const POST = handle(app);
