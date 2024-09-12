@@ -467,6 +467,130 @@ app.frame('/q3', (c) => {
   })
 })
 
+app.frame('/q4', (c) => {
+  const answerOptions = ['True', 'False'];
+
+  return c.res({
+    action: '/q5',
+    image: (
+      <div
+        style={{
+          alignItems: 'flex-start',
+          background: '#58CC02',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '20px' }}>
+          <Text
+            font="default"
+            size="24"
+            weight="700"
+            color="white"
+          >
+            The sky is always blue.
+          </Text>
+        </div>
+
+        {/* Answer options */}
+        {answerOptions.map((option, index) => (
+          <div 
+            key={index} 
+            style={{ 
+              display: 'flex', 
+              marginBottom: '15px', 
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + index)}. ${option}`}
+            </Text>
+          </div>
+        ))}
+      </div>
+    ),
+    intents: [
+      <Button value="true">True</Button>,
+      <Button value="false">False</Button>,
+    ],
+  })
+})
+
+app.frame('/q5', (c) => {
+  const answerOptions = ['True', 'False'];
+
+  return c.res({
+    action: '/points',
+    image: (
+      <div
+        style={{
+          alignItems: 'flex-start',
+          background: '#58CC02',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '20px' }}>
+          <Text
+            font="default"
+            size="24"
+            weight="700"
+            color="white"
+          >
+            The sky is always blue.
+          </Text>
+        </div>
+
+        {/* Answer options */}
+        {answerOptions.map((option, index) => (
+          <div 
+            key={index} 
+            style={{ 
+              display: 'flex', 
+              marginBottom: '15px', 
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + index)}. ${option}`}
+            </Text>
+          </div>
+        ))}
+      </div>
+    ),
+    intents: [
+      <Button value="true">True</Button>,
+      <Button value="false">False</Button>,
+    ],
+  })
+})
+
 app.castAction("/action", async (c) => {
   return c.frame({ path: '/' })
 },
