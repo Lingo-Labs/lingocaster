@@ -697,6 +697,111 @@ app.frame('/streak', (c) => {
   })
 })
 
+app.frame('/bet', (c) => {
+  return c.res({
+    image: (
+      <div
+        style={{
+          alignItems: 'center',
+          background: 'black',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+          justifyContent: 'flex-start',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '60px', marginTop: '20px' }}>
+          <Text
+            font="default"
+            size="32"
+            weight="700"
+            color="white"
+          >
+            Wanna bet...
+          </Text>
+        </div>
+
+        {/* Two columns */}
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'row', 
+          justifyContent: 'space-between', 
+          width: '100%' 
+        }}>
+          {/* Left column */}
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            width: '45%' 
+          }}>
+            <Text
+              font="default"
+              size="24"
+              weight="700"
+              color="white"
+            >
+              On Yourself
+            </Text>
+            <div
+            style={{ display: 'flex', textAlign: 'center', padding: '10px', marginTop: '10px' }}
+            >
+            <Text
+              font="default"
+              size="18"
+              weight="400"
+              color="white"
+              // style={{ textAlign: 'center', marginTop: '10px' }}
+            >
+              Play for 30 days in a row and earn PYUSD!
+            </Text>
+            </div>
+          </div>
+
+          {/* Right column */}
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            width: '45%' 
+          }}>
+            <Text
+              font="default"
+              size="24"
+              weight="700"
+              color="white"
+            >
+              Against a Friend
+            </Text>
+            <div
+            style={{ display: 'flex', textAlign: 'center', padding: '10px', marginTop: '10px' }}
+            >
+            <Text
+              font="default"
+              size="18"
+              weight="400"
+              color="white"
+              // style={{ textAlign: 'center', marginTop: '10px' }}
+            >
+              Bet against a friend and set your own terms in PYUSD!
+
+            </Text>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    intents: [
+      <Button.Link href="https://google.com">Bet on Myself</Button.Link>,
+      <Button.Link href="https://google.com">Bet a Friend</Button.Link>,
+    ],
+  })
+})
+
 app.castAction("/action", async (c) => {
   return c.frame({ path: '/' })
 },
