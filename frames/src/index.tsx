@@ -23,7 +23,7 @@ const { Image, Text, vars } = createSystem({
       {
         name: 'Poppins',
         source: 'google',
-        weight: 700,
+        weight: 500
       }
     ],
   },
@@ -275,8 +275,9 @@ app.frame('/quiztime', (c) => {
   })
 })
 
-
 app.frame('/q1', (c) => {
+  const answerOptions = ['Apple', 'Banana', 'Cherry', 'Date'];
+
   return c.res({
     action: '/q2',
     image: (
@@ -293,7 +294,7 @@ app.frame('/q1', (c) => {
         }}
       >
         {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '10px' }}>
+        <div style={{ display: 'flex', marginBottom: '20px' }}>
           <Text
             font="default"
             size="24"
@@ -304,29 +305,157 @@ app.frame('/q1', (c) => {
           </Text>
         </div>
 
-        {/* White rounded rectangle */}
-        <div
-          style={{
-            display: 'flex',
-            background: 'white',
-            borderRadius: '15px',
-            lineHeight: '1',
-            flexGrow: 1,
-            padding: '20px',
-            width: '100%',
-          }}
-        >
-          {/* Blue sample text */}
-          <div style={{ display: 'flex', color: 'black' }}>
+        {/* Answer options */}
+        {answerOptions.map((option, index) => (
+          <div 
+            key={index} 
+            style={{ 
+              display: 'flex', 
+              marginBottom: '15px', 
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
             <Text
-              font="default"
-              size="20"
-              color="blue"
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
             >
-              Sample translation text goes here. This is where the translated content will be displayed.
+              {`${String.fromCharCode(97 + index)}. ${option}`}
             </Text>
           </div>
+        ))}
+      </div>
+    ),
+    intents: [
+      <Button>a</Button>,
+      <Button>b</Button>,
+      <Button>c</Button>,
+      <Button>d</Button>,
+    ],
+  })
+})
+
+app.frame('/q2', (c) => {
+  const answerOptions = ['Bob', 'Mary', 'John', 'Jane'];
+
+  return c.res({
+    action: '/q3',
+    image: (
+      <div
+        style={{
+          alignItems: 'flex-start',
+          background: '#58CC02',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '20px' }}>
+          <Text
+            font="default"
+            size="24"
+            weight="700"
+            color="white"
+          >
+            What is the name of the person who is ___?
+          </Text>
         </div>
+
+        {/* Answer options */}
+        {answerOptions.map((option, index) => (
+          <div 
+            key={index} 
+            style={{ 
+              display: 'flex', 
+              marginBottom: '15px', 
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + index)}. ${option}`}
+            </Text>
+          </div>
+        ))}
+      </div>
+    ),
+    intents: [
+      <Button>a</Button>,
+      <Button>b</Button>,
+      <Button>c</Button>,
+      <Button>d</Button>,
+    ],
+  })
+})
+
+app.frame('/q3', (c) => {
+  const answerOptions = ['Red', 'Blue', 'Green', 'Yellow'];
+
+  return c.res({
+    action: '/q4',
+    image: (
+      <div
+        style={{
+          alignItems: 'flex-start',
+          background: '#58CC02',
+          backgroundSize: '100% 100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%',
+          padding: '40px',
+        }}
+      >
+        {/* Title */}
+        <div style={{ display: 'flex', marginBottom: '20px' }}>
+          <Text
+            font="default"
+            size="24"
+            weight="700"
+            color="white"
+          >
+            What is the color of the sky?
+          </Text>
+        </div>
+
+        {/* Answer options */}
+        {answerOptions.map((option, index) => (
+          <div 
+            key={index} 
+            style={{ 
+              display: 'flex', 
+              marginBottom: '15px', 
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + index)}. ${option}`}
+            </Text>
+          </div>
+        ))}
       </div>
     ),
     intents: [
