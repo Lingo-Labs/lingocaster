@@ -1,8 +1,9 @@
-import { serveStatic } from '@hono/node-server/serve-static'
-import { Button, Frog, TextInput } from 'frog'
-import { devtools } from 'frog/dev'
+// import { serveStatic } from '@hono/node-server/serve-static'
+import { Button, Frog } from 'frog'
+// import { devtools } from 'frog/dev'
 import { neynar } from 'frog/hubs'
 import { createSystem } from 'frog/ui'
+import { handle } from 'frog/vercel'
 // import { useState } from 'hono/jsx'
 
 const { Image, Text, vars } = createSystem({
@@ -35,12 +36,14 @@ const { Image, Text, vars } = createSystem({
 })
 
 export const app = new Frog({
-  hub: neynar({ apiKey: 'NEYNAR_FROG_FM' }),
   title: 'Lingocaster',
-  ui: { vars }
+  hub: neynar({ apiKey: 'NEYNAR_FROG_FM' }),
+  ui: { vars },
+  assetsPath: "/",
+  basePath: "/api",
 })
 
-app.use('/*', serveStatic({ root: './public' }))
+// app.use('/*', serveStatic({ root: './public' }))
 
 app.frame('/', (c) => {
   return c.res({
@@ -703,4 +706,10 @@ app.castAction("/action", async (c) => {
   { name: "Lingo!", icon: "globe" }
 );
 
-devtools(app, { serveStatic })
+// @ts-ignore
+// const isEdgeFunction = typeof EdgeFunction !== "undefined";
+// const isProduction = isEdgeFunction || import.meta.env?.MODE !== "development";
+// devtools(app, isProduction ? { assetsPath: "/.frog" } : { serveStatic });
+
+export const GET = handle(app);
+export const POST = handle(app);
