@@ -757,7 +757,7 @@ app.frame('/bet', (c) => {
               color="white"
               // style={{ textAlign: 'center', marginTop: '10px' }}
             >
-              Play for 30 days in a row and earn PYUSD!
+              Play for 30 days in a row and earn PYUSD from a weighted pool!
             </Text>
             </div>
           </div>
