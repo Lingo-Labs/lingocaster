@@ -230,7 +230,7 @@ app.frame('/phrases', (c) => {
   const firstEntry = Object.entries(phraseTranslation)[0] || ['', ''];
   const [english, spanish] = firstEntry;
 
-  const secondEntry = Object.entries(phraseTranslation)[1] || ['', ''];
+  const secondEntry = Object.entries(phraseTranslation)[1];
   const [english2, spanish2] = secondEntry;
 
   const thirdEntry = Object.entries(phraseTranslation)[2] || ['', ''];
@@ -298,7 +298,7 @@ app.frame('/phrases', (c) => {
               {`${spanish}`}
             </Text>
           </div>
-          {/* {secondEntry && (
+          {secondEntry && (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={{ display: 'flex', marginRight: '10px' }}>
               <Text
@@ -319,7 +319,8 @@ app.frame('/phrases', (c) => {
               {`${spanish2}`}
             </Text>
           </div>
-          )}
+          )} 
+          {/*
           {thirdEntry && (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={{ display: 'flex', marginRight: '10px' }}>
