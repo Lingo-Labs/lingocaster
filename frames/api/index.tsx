@@ -226,7 +226,7 @@ app.frame('/translation', async (c) => {
 app.frame('/phrases', (c) => {
   const { deriveState } = c;
   const state = deriveState((previousState) => {
- });
+  });
 
   const phraseTranslation = state.openaiResponse?.phrase_translation || {};
   const firstEntry = Object.entries(phraseTranslation)[0] || ['', ''];
@@ -302,71 +302,71 @@ app.frame('/phrases', (c) => {
           </div>
           {secondEntry && (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div style={{ display: 'flex', marginRight: '10px' }}>
+              <div style={{ display: 'flex', marginRight: '10px' }}>
+                <Text
+                  font="default"
+                  size="18"
+                  color="blue"
+                  weight="700"
+                >
+                  {`${english2}:`}
+                </Text>
+              </div>
               <Text
                 font="default"
                 size="18"
                 color="blue"
-                weight="700"
+                weight="400"
               >
-                {`${english2}:`}
+                {`${spanish2}`}
               </Text>
             </div>
-            <Text
-              font="default"
-              size="18"
-              color="blue"
-              weight="400"
-            >
-              {`${spanish2}`}
-            </Text>
-          </div>
-          )} 
-          
+          )}
+
           {thirdEntry && (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div style={{ display: 'flex', marginRight: '10px' }}>
+              <div style={{ display: 'flex', marginRight: '10px' }}>
+                <Text
+                  font="default"
+                  size="18"
+                  color="blue"
+                  weight="700"
+                >
+                  {`${english3}:`}
+                </Text>
+              </div>
               <Text
                 font="default"
                 size="18"
                 color="blue"
-                weight="700"
+                weight="400"
               >
-                {`${english3}:`}
+                {`${spanish3}`}
               </Text>
             </div>
-            <Text
-              font="default"
-              size="18"
-              color="blue"
-              weight="400"
-            >
-              {`${spanish3}`}
-            </Text>
-          </div>
           )}
           {forthEntry && (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div style={{ display: 'flex', marginRight: '10px' }}>
+              <div style={{ display: 'flex', marginRight: '10px' }}>
+                <Text
+                  font="default"
+                  size="18"
+                  color="blue"
+                  weight="700"
+                >
+                  {`${english4}:`}
+                </Text>
+              </div>
               <Text
                 font="default"
                 size="18"
                 color="blue"
-                weight="700"
+                weight="400"
               >
-                {`${english4}:`}
+                {`${spanish4}`}
               </Text>
             </div>
-            <Text
-              font="default"
-              size="18"
-              color="blue"
-              weight="400"
-            >
-              {`${spanish4}`}
-            </Text>
-          </div>
-          )} 
+          )}
         </div>
       </div>
     ),
@@ -462,81 +462,81 @@ app.frame('/q1', (c) => {
 
         {/* Answer options */}
         <div
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
+          style={{
+            display: 'flex',
+            marginBottom: '15px',
+            marginLeft: '20px',
+            borderRadius: '10px',
+            padding: '10px',
+            width: '100%',
+          }}
+        >
+          <Text
+            font="manrope"
+            weight="500"
+            size="18"
+            color="white"
           >
-            <Text
-              font="manrope"
-              weight="500"
-              size="18"
-              color="white"
-            >
-              {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
-            </Text>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
+            {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
+          </Text>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            marginBottom: '15px',
+            marginLeft: '20px',
+            borderRadius: '10px',
+            padding: '10px',
+            width: '100%',
+          }}
+        >
+          <Text
+            font="manrope"
+            weight="500"
+            size="18"
+            color="white"
           >
-            <Text
-              font="manrope"
-              weight="500"
-              size="18"
-              color="white"
-            >
-              {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
-            </Text>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
+            {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
+          </Text>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            marginBottom: '15px',
+            marginLeft: '20px',
+            borderRadius: '10px',
+            padding: '10px',
+            width: '100%',
+          }}
+        >
+          <Text
+            font="manrope"
+            weight="500"
+            size="18"
+            color="white"
           >
-            <Text
-              font="manrope"
-              weight="500"
-              size="18"
-              color="white"
-            >
-              {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
-            </Text>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
+            {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
+          </Text>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            marginBottom: '15px',
+            marginLeft: '20px',
+            borderRadius: '10px',
+            padding: '10px',
+            width: '100%',
+          }}
+        >
+          <Text
+            font="manrope"
+            weight="500"
+            size="18"
+            color="white"
           >
-            <Text
-              font="manrope"
-              weight="500"
-              size="18"
-              color="white"
-            >
-              {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
-            </Text>
-          </div>
+            {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
+          </Text>
+        </div>
       </div>
     ),
     intents: [
@@ -588,81 +588,81 @@ app.frame('/q2', (c) => {
 
         {/* Answer options */}
         <div
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
+          style={{
+            display: 'flex',
+            marginBottom: '15px',
+            marginLeft: '20px',
+            borderRadius: '10px',
+            padding: '10px',
+            width: '100%',
+          }}
+        >
+          <Text
+            font="manrope"
+            weight="500"
+            size="18"
+            color="white"
           >
-            <Text
-              font="manrope"
-              weight="500"
-              size="18"
-              color="white"
-            >
-              {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
-            </Text>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
+            {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
+          </Text>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            marginBottom: '15px',
+            marginLeft: '20px',
+            borderRadius: '10px',
+            padding: '10px',
+            width: '100%',
+          }}
+        >
+          <Text
+            font="manrope"
+            weight="500"
+            size="18"
+            color="white"
           >
-            <Text
-              font="manrope"
-              weight="500"
-              size="18"
-              color="white"
-            >
-              {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
-            </Text>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
+            {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
+          </Text>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            marginBottom: '15px',
+            marginLeft: '20px',
+            borderRadius: '10px',
+            padding: '10px',
+            width: '100%',
+          }}
+        >
+          <Text
+            font="manrope"
+            weight="500"
+            size="18"
+            color="white"
           >
-            <Text
-              font="manrope"
-              weight="500"
-              size="18"
-              color="white"
-            >
-              {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
-            </Text>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
+            {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
+          </Text>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            marginBottom: '15px',
+            marginLeft: '20px',
+            borderRadius: '10px',
+            padding: '10px',
+            width: '100%',
+          }}
+        >
+          <Text
+            font="manrope"
+            weight="500"
+            size="18"
+            color="white"
           >
-            <Text
-              font="manrope"
-              weight="500"
-              size="18"
-              color="white"
-            >
-              {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
-            </Text>
-          </div>
+            {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
+          </Text>
+        </div>
       </div>
     ),
     intents: [
@@ -677,7 +677,7 @@ app.frame('/q2', (c) => {
 app.frame('/q3', (c) => {
   const answerOptions = ['True', 'False'];
   const { deriveState, buttonValue } = c;
-  const state = deriveState((previousState) => {});
+  const state = deriveState((previousState) => { });
   const q3 = state.openaiResponse?.true_false_questions[0].question;
 
   const correctQ2Answer = state.openaiResponse?.multiple_choice_questions[1].correct_answer;
@@ -747,7 +747,7 @@ app.frame('/q3', (c) => {
 app.frame('/q4', (c) => {
   const answerOptions = ['True', 'False'];
   const { deriveState, buttonValue } = c;
-  const state = deriveState((previousState) => {});
+  const state = deriveState((previousState) => { });
   const q4 = state.openaiResponse?.true_false_questions[1].question;
 
   const correctQ3Answer = state.openaiResponse?.true_false_questions[0].correct_answer;
@@ -816,7 +816,7 @@ app.frame('/q4', (c) => {
 
 app.frame('/points', (c) => {
   const { deriveState, buttonValue } = c;
-  const state = deriveState((previousState) => {});
+  const state = deriveState((previousState) => { });
 
   const correctQ4Answer = state.openaiResponse?.true_false_questions[1].correct_answer;
   if (buttonValue === correctQ4Answer) {
@@ -868,7 +868,7 @@ app.frame('/points', (c) => {
             weight="400"
             color="white"
           >
-            You're now at 400 points for the week!
+            {`You're now at ${state.points} points for the week!`}
           </Text>
         </div>
       </div>
