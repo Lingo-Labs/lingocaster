@@ -224,8 +224,7 @@ app.frame('/translation', async (c) => {
 app.frame('/phrases', (c) => {
   const { deriveState } = c;
   const state = deriveState((previousState) => {
-    // No changes needed, just access the state
-  });
+ });
 
   const phraseTranslation = state.openaiResponse?.phrase_translation || {};
   const firstEntry = Object.entries(phraseTranslation)[0] || ['', ''];
@@ -270,13 +269,26 @@ app.frame('/phrases', (c) => {
             overflowY: 'auto',
           }}
         >
-          <Text
-            font="default"
-            size="24"
-            color="blue"
-          >
-            {`${english}: ${spanish}`}
-          </Text>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', marginRight: '10px' }}>
+              <Text
+                font="default"
+                size="18"
+                color="blue"
+                weight="700"
+              >
+                {`${english}:`}
+              </Text>
+            </div>
+            <Text
+              font="default"
+              size="18"
+              color="blue"
+              weight="400"
+            >
+              {` ${spanish}`}
+            </Text>
+          </div>
         </div>
       </div>
     ),
@@ -317,14 +329,14 @@ app.frame('/quiztime', (c) => {
 
         {/* Subtitle */}
         <div style={{ display: 'flex', marginBottom: '10px' }}>
-        <Text
-          font="default"
-          size="24"
-          weight="400"
-          color="white"
-        >
-          4 questions
-        </Text>
+          <Text
+            font="default"
+            size="24"
+            weight="400"
+            color="white"
+          >
+            4 questions
+          </Text>
         </div>
       </div>
     ),
@@ -367,11 +379,11 @@ app.frame('/q1', (c) => {
 
         {/* Answer options */}
         {answerOptions.map((option, index) => (
-          <div 
-            key={index} 
-            style={{ 
-              display: 'flex', 
-              marginBottom: '15px', 
+          <div
+            key={index}
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
               marginLeft: '20px',
               borderRadius: '10px',
               padding: '10px',
@@ -431,11 +443,11 @@ app.frame('/q2', (c) => {
 
         {/* Answer options */}
         {answerOptions.map((option, index) => (
-          <div 
-            key={index} 
-            style={{ 
-              display: 'flex', 
-              marginBottom: '15px', 
+          <div
+            key={index}
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
               marginLeft: '20px',
               borderRadius: '10px',
               padding: '10px',
@@ -495,11 +507,11 @@ app.frame('/q3', (c) => {
 
         {/* Answer options */}
         {answerOptions.map((option, index) => (
-          <div 
-            key={index} 
-            style={{ 
-              display: 'flex', 
-              marginBottom: '15px', 
+          <div
+            key={index}
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
               marginLeft: '20px',
               borderRadius: '10px',
               padding: '10px',
@@ -557,11 +569,11 @@ app.frame('/q4', (c) => {
 
         {/* Answer options */}
         {answerOptions.map((option, index) => (
-          <div 
-            key={index} 
-            style={{ 
-              display: 'flex', 
-              marginBottom: '15px', 
+          <div
+            key={index}
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
               marginLeft: '20px',
               borderRadius: '10px',
               padding: '10px',
@@ -618,24 +630,24 @@ app.frame('/points', (c) => {
 
         {/* Subtitle */}
         <div style={{ display: 'flex', marginBottom: '10px' }}>
-        <Text
-          font="default"
-          size="24"
-          weight="400"
-          color="white"
-        >
-          points!
-        </Text>
+          <Text
+            font="default"
+            size="24"
+            weight="400"
+            color="white"
+          >
+            points!
+          </Text>
         </div>
         <div style={{ display: 'flex', marginTop: '50px' }}>
-        <Text
-          font="default"
-          size="18"
-          weight="400"
-          color="white"
-        >
-          You're now at 400 points for the week!
-        </Text>
+          <Text
+            font="default"
+            size="18"
+            weight="400"
+            color="white"
+          >
+            You're now at 400 points for the week!
+          </Text>
         </div>
       </div>
     ),
@@ -671,14 +683,14 @@ app.frame('/streak', (c) => {
 
         {/* Subtitle */}
         <div style={{ display: 'flex', marginTop: '35px' }}>
-        <Text
-          font="default"
-          size="24"
-          weight="500"
-          color="red"
-        >
-          {`You're on a ${num} day streak!`}
-        </Text>
+          <Text
+            font="default"
+            size="24"
+            weight="500"
+            color="red"
+          >
+            {`You're on a ${num} day streak!`}
+          </Text>
         </div>
       </div>
     ),
@@ -718,18 +730,18 @@ app.frame('/bet', (c) => {
         </div>
 
         {/* Two columns */}
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'row', 
-          justifyContent: 'space-between', 
-          width: '100%' 
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: '100%'
         }}>
           {/* Left column */}
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            width: '45%' 
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '45%'
           }}>
             <Text
               font="default"
@@ -740,26 +752,26 @@ app.frame('/bet', (c) => {
               On Yourself
             </Text>
             <div
-            style={{ display: 'flex', textAlign: 'center', padding: '10px', marginTop: '10px' }}
+              style={{ display: 'flex', textAlign: 'center', padding: '10px', marginTop: '10px' }}
             >
-            <Text
-              font="default"
-              size="18"
-              weight="400"
-              color="white"
+              <Text
+                font="default"
+                size="18"
+                weight="400"
+                color="white"
               // style={{ textAlign: 'center', marginTop: '10px' }}
-            >
-              Play for 30 days in a row and earn PYUSD from a weighted pool!
-            </Text>
+              >
+                Play for 30 days in a row and earn PYUSD from a weighted pool!
+              </Text>
             </div>
           </div>
 
           {/* Right column */}
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            width: '45%' 
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '45%'
           }}>
             <Text
               font="default"
@@ -770,18 +782,18 @@ app.frame('/bet', (c) => {
               Against a Friend
             </Text>
             <div
-            style={{ display: 'flex', textAlign: 'center', padding: '10px', marginTop: '10px' }}
+              style={{ display: 'flex', textAlign: 'center', padding: '10px', marginTop: '10px' }}
             >
-            <Text
-              font="default"
-              size="18"
-              weight="400"
-              color="white"
+              <Text
+                font="default"
+                size="18"
+                weight="400"
+                color="white"
               // style={{ textAlign: 'center', marginTop: '10px' }}
-            >
-              Challenge a friend and set your own terms in PYUSD!
+              >
+                Challenge a friend and set your own terms in PYUSD!
 
-            </Text>
+              </Text>
             </div>
           </div>
         </div>
