@@ -10,14 +10,11 @@ import {
 } from '@mui/material';
 import { usePortal } from '@/providers/portal';
 
-// Sample NFT data (replace this with your actual data)
 const nfts = [
-  { id: 1, image: '/path/to/image1.jpg', title: 'First Lingocast!', subtitle: 'You played your first game on Lingocaster!' },
-  { id: 2, image: '/path/to/image2.jpg', title: '1 Day Streak', subtitle: 'Your highest streak is 1 day! Keep it up!' },
-  { id: 3, image: '/path/to/image2.jpg', title: 'Send PYUSD', subtitle: 'You used PYUSD for a challenge' },
-  { id: 4, image: '/path/to/image2.jpg', title: 'Challenge a Friend', subtitle: 'You challenged @johnsmith 10 PYUSD' },
-
-  // Add more NFT objects as needed
+  { id: 1, image: '/first.png', title: 'First Lingocast!', subtitle: 'You played your first game on Lingocaster!' },
+  { id: 2, image: '/second.png', title: '1 Day Streak', subtitle: 'Your highest streak is 1 day! Keep it up!' },
+  { id: 3, image: '/third.png', title: 'Send PYUSD', subtitle: 'You used PYUSD for a challenge' },
+  { id: 4, image: '/forth.png', title: 'Challenge a Friend', subtitle: 'You challenged @johnsmith 10 PYUSD' },
 ];
 
 export default function Home() {
@@ -71,7 +68,11 @@ export default function Home() {
                   >
                     <CardMedia
                       component="img"
-                      height="200"
+                      sx={{
+                        width: '100%',
+                        height: 245.66,
+                        objectFit: 'cover',
+                      }}
                       image={nft.image}
                       alt={nft.title}
                     />
