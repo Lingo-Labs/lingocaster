@@ -71,12 +71,24 @@ export default function Layout({ children }: { children: ReactNode }) {
         severity: 'success',
         message: `Successfully generated Solana address`,
       });
+
+      // Add timeout to close the snackbar after 5 seconds
+      setTimeout(() => {
+        snackbar.setSnackbarOpen(false);
+      }, 3000);
+
     } catch (e) {
       snackbar.setSnackbarOpen(true);
       snackbar.setSnackbarContent({
         severity: 'error',
         message: `Something went wrong - ${e}`,
       });
+
+      // Add timeout to close the snackbar after 5 seconds
+      setTimeout(() => {
+        snackbar.setSnackbarOpen(false);
+      }, 3000);
+
     } finally {
       setGeneratingSolanaAddress(false);
     }
