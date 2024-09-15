@@ -24,6 +24,13 @@ export default function Home() {
   const [tokens, setTokens] = useState<ITokenBalance[]>([]);
   const [tokensLoading, setTokensLoading] = useState(false);
   const [txnOngoing, setTxnOngoing] = useState(false);
+  const [interactor, setInteractor] = useState('');
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setInteractor(searchParams.get('interactor') || '');
+    console.log('interactor: ', interactor);
+  }, [interactor]);
 
   const loadTokens = async () => {
     try {

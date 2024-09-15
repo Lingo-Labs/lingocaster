@@ -924,6 +924,7 @@ app.frame('/streak', (c) => {
 })
 
 app.frame('/bet', (c) => {
+  const interactor = c.var.interactor?.username;
   return c.res({
     image: (
       <div
@@ -1023,7 +1024,7 @@ app.frame('/bet', (c) => {
     ),
     intents: [
       <Button.Link href="https://google.com">Bet on Myself</Button.Link>,
-      <Button.Link href="https://google.com">Bet a Friend</Button.Link>,
+      <Button.Link href={`https://lingo-caster.vercel.app/bet?interactor=${interactor}`}>Bet a Friend</Button.Link>,
     ],
   })
 })
