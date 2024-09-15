@@ -8,10 +8,7 @@ import { handle } from 'frog/vercel'
 import OpenAI from "openai"
 import dotenv from 'dotenv'
 dotenv.config()
-import { useState } from 'hono/jsx'
 
-const [openaiResponse, setOpenaiResponse] = useState<any>();
-// const [translation, setTranslation] = useState<any>();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, dangerouslyAllowBrowser: true });
 
 const openAIPayload = `
@@ -57,12 +54,21 @@ const { Image, Text, vars } = createSystem({
   }
 })
 
-export const app = new Frog({
+// Define the State type
+type State = {
+  openaiResponse: any | null;
+}
+
+// Initialize the Frog app with the State type and initial state
+export const app = new Frog<{ State: State }>({
   title: 'Lingocaster',
   hub: neynarHub({ apiKey: 'NEYNAR_FROG_FM' }),
   ui: { vars },
   assetsPath: "/",
   basePath: "/api",
+  initialState: {
+    openaiResponse: null
+  }
 }).use(
   neynar({
     apiKey: "NEYNAR_FROG_FM",
@@ -72,16 +78,7 @@ export const app = new Frog({
 
 // app.use('/*', serveStatic({ root: './public' }))
 
-app.frame('/', async (c) => {
-  const castText = c.var.cast?.text;
-  const completion = await openai.chat.completions.create({
-    messages: [
-      { role: "system", content: openAIPayload + `\n${castText}` },
-      // { role: "user", content: `Translate this to English: ${castText}` }
-    ],
-    model: "gpt-3.5-turbo",
-  });
-  setOpenaiResponse(JSON.parse(completion.choices[0].message.content!));
+app.frame('/', (c) => {
   return c.res({
     action: '/translation',
     image: (
@@ -147,11 +144,24 @@ app.frame('/', async (c) => {
   })
 })
 
-app.frame('/translation', (c) => {
-  
-  const translation = openaiResponse.translation;
-  // setTranslation(JSON.parse(completion.choices[0].message.content!).translation);
-  // let gg = JSON.parse(completion.choices[0].message.content!).translation;
+app.frame('/translation', async (c) => {
+  const castText = c.var.cast?.text;
+  const { deriveState } = c;
+
+  const state = await deriveState(async (previousState) => {
+    if (!previousState.openaiResponse) {
+      const completion = await openai.chat.completions.create({
+        messages: [
+          { role: "system", content: openAIPayload + `\n${castText}` },
+        ],
+        model: "gpt-3.5-turbo",
+      });
+      previousState.openaiResponse = JSON.parse(completion.choices[0].message.content!);
+    }
+  });
+
+  const translation = state.openaiResponse?.translation || '';
+
   return c.res({
     action: '/phrases',
     image: (
@@ -212,7 +222,13 @@ app.frame('/translation', (c) => {
 })
 
 app.frame('/phrases', (c) => {
-  const phrase = openaiResponse.phrase_translation;
+  const { deriveState } = c;
+  const state = deriveState((previousState) => {
+    // No changes needed, just access the state
+  });
+
+  const phraseTranslation = state.openaiResponse?.phrase_translation || '';
+
   return c.res({
     image: (
       <div
@@ -258,9 +274,7 @@ app.frame('/phrases', (c) => {
               size="20"
               color="blue"
             >
-              {/* {openaiResponse.phrase_translation} */}
-              {phrase}
-              {/* Sample translation text goes here. This is where the translated content will be displayed. */}
+              {phraseTranslation}
             </Text>
           </div>
         </div>
