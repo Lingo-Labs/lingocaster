@@ -12,10 +12,10 @@ import { usePortal } from '@/providers/portal';
 
 // Sample NFT data (replace this with your actual data)
 const nfts = [
-  { id: 1, image: '/path/to/image1.jpg', title: 'NFT 1', subtitle: 'Description 1' },
-  { id: 2, image: '/path/to/image2.jpg', title: 'NFT 2', subtitle: 'Description 2' },
-  { id: 2, image: '/path/to/image2.jpg', title: 'NFT 2', subtitle: 'Description 2' },
-  { id: 2, image: '/path/to/image2.jpg', title: 'NFT 2', subtitle: 'Description 2' },
+  { id: 1, image: '/path/to/image1.jpg', title: 'First Lingocast!', subtitle: 'You played your first game on Lingocaster!' },
+  { id: 2, image: '/path/to/image2.jpg', title: '1 Day Streak', subtitle: 'Your highest streak is 1 day! Keep it up!' },
+  { id: 3, image: '/path/to/image2.jpg', title: 'Send PYUSD', subtitle: 'You used PYUSD for a challenge' },
+  { id: 4, image: '/path/to/image2.jpg', title: 'Challenge a Friend', subtitle: 'You challenged @johnsmith 10 PYUSD' },
 
   // Add more NFT objects as needed
 ];
