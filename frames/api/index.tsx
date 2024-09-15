@@ -228,6 +228,8 @@ app.frame('/phrases', (c) => {
   });
 
   const phraseTranslation = state.openaiResponse?.phrase_translation || {};
+  const firstEntry = Object.entries(phraseTranslation)[0] || ['', ''];
+  const [english, spanish] = firstEntry;
 
   return c.res({
     image: (
@@ -251,7 +253,7 @@ app.frame('/phrases', (c) => {
             weight="700"
             color="white"
           >
-            Here's what each phrase means:
+            Here's what this phrase means:
           </Text>
         </div>
 
@@ -268,17 +270,13 @@ app.frame('/phrases', (c) => {
             overflowY: 'auto',
           }}
         >
-          {Object.entries(phraseTranslation).map(([english, spanish], index) => (
-            <div key={index} style={{ marginBottom: '10px' }}>
-              <Text
-                font="default"
-                size="18"
-                color="blue"
-              >
-                <span style={{ fontWeight: 'bold' }}>{english}</span>: {spanish as string}
-              </Text>
-            </div>
-          ))}
+          <Text
+            font="default"
+            size="24"
+            color="blue"
+          >
+            {`${english}: ${spanish}`}
+          </Text>
         </div>
       </div>
     ),
