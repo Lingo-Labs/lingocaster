@@ -1024,7 +1024,7 @@ app.frame('/bet', (c) => {
     ),
     intents: [
       <Button.Link href="https://google.com">Bet on Myself</Button.Link>,
-      <Button.Link href={`localhost:3000/bet?interactor=${interactor}`}>Bet a Friend</Button.Link>,
+      <Button.Link href={`http://localhost:3000/bet?interactor=${interactor}`}>Bet a Friend</Button.Link>,
     ],
   })
 })
