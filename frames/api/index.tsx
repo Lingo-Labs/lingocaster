@@ -253,7 +253,7 @@ app.frame('/phrases', (c) => {
             weight="700"
             color="white"
           >
-            Here's what each phrases means:
+            Here's what each phrases mean:
           </Text>
         </div>
 
@@ -271,26 +271,26 @@ app.frame('/phrases', (c) => {
           }}
         >
           {displayEntries.map(([english, spanish], index) => (
-            <div key={index} style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
-              <div style={{ display: 'flex', marginRight: '10px' }}>
-                <Text
-                  font="default"
-                  size="18"
-                  color="blue"
-                  weight="700"
-                >
-                  {`${english}:`}
-                </Text>
-              </div>
+            <div key={index} style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', marginRight: '10px' }}>
               <Text
                 font="default"
                 size="18"
                 color="blue"
-                weight="400"
+                weight="700"
               >
-                {` ${spanish}`}
+                {`${english}:`}
               </Text>
             </div>
+            <Text
+              font="default"
+              size="18"
+              color="blue"
+              weight="400"
+            >
+              {` ${spanish}`}
+            </Text>
+          </div>
           ))}
         </div>
       </div>
