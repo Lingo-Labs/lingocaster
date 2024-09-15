@@ -267,7 +267,7 @@ app.frame('/quiztime', (c) => {
           weight="400"
           color="white"
         >
-          6 questions
+          4 questions
         </Text>
         </div>
       </div>
@@ -571,16 +571,16 @@ app.frame('/points', (c) => {
           points!
         </Text>
         </div>
-        {/* <div style={{ display: 'flex', marginTop: '50px' }}>
+        <div style={{ display: 'flex', marginTop: '50px' }}>
         <Text
           font="default"
-          size="24"
+          size="18"
           weight="400"
           color="white"
         >
-          You're now at 1000 points
+          You're now at 400 points for the week!
         </Text>
-        </div> */}
+        </div>
       </div>
     ),
     intents: [
