@@ -461,7 +461,26 @@ app.frame('/q1', (c) => {
         </div>
 
         {/* Answer options */}
-        {answers.map((option: any, index: any) => (
+        <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
+            </Text>
+          </div>
+        {/* {answers.map((option: any, index: any) => (
           <div
             key={index}
             style={{
@@ -482,14 +501,14 @@ app.frame('/q1', (c) => {
               {`${String.fromCharCode(97 + index)}. ${option}`}
             </Text>
           </div>
-        ))}
+        ))} */}
       </div>
     ),
     intents: [
-      <Button value={answers[0]}>a</Button>,
-      <Button value={answers[1]}>b</Button>,
-      <Button value={answers[2]}>c</Button>,
-      <Button value={answers[3]}>d</Button>,
+      <Button>a</Button>,
+      <Button>b</Button>,
+      <Button>c</Button>,
+      <Button>d</Button>,
     ],
   })
 })
