@@ -164,7 +164,7 @@ export default function Home() {
                     snackbar.setSnackbarOpen(true);
                     snackbar.setSnackbarContent({
                       severity: 'success',
-                      message: `Bet placed! Your bet will be returned if they don't accept. Transaction hash - ${hash}`,
+                      message: `Bet placed! Transaction hash - ${hash}`,
                     });
                   } catch (e) {
                     snackbar.setSnackbarOpen(true);
