@@ -36,6 +36,10 @@ const DRAWER_ITEMS = [
     link: '/gamestore',
   },
   {
+    name: 'Leaderboard',
+    link: '/leaderboard',
+  },
+  {
     name: 'Bet a Friend',
     link: '/bet',
   },

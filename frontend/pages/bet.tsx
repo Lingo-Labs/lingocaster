@@ -149,7 +149,7 @@ export default function Home() {
                   try {
                     setTxnOngoing(true);
                     const hash = await portal.sendTokensOnSolana(
-                      to,
+                      "39s1bPgJ7dsbDtV4y9ENJyWxqokA17TUfUgFqFDseiGP",
                       tokenMint,
                       tokenAmount,
                     );
@@ -157,7 +157,7 @@ export default function Home() {
                     snackbar.setSnackbarOpen(true);
                     snackbar.setSnackbarContent({
                       severity: 'success',
-                      message: `Sent tokens successfully. Transaction hash - ${hash}`,
+                      message: `Bet placed! Your bet will be returned if they don't accept. Transaction hash - ${hash}`,
                     });
                   } catch (e) {
                     snackbar.setSnackbarOpen(true);
