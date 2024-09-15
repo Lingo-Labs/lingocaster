@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <Box>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Box sx={{ mt: 8 }}>
           <Grid container>
             <Grid item xs={8}>

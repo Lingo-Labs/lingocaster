@@ -46,7 +46,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
+  justifyContent: 'space-between', // Changed from 'flex-end' to 'space-between'
 }));
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -181,6 +181,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           open={open}
         >
           <DrawerHeader>
+            <Typography sx={{ pl: 1 }} variant="h6">Lingocaster</Typography>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === 'ltr' ? (
                 <ChevronLeftIcon />

@@ -50,22 +50,34 @@ export default function Home() {
       <Container maxWidth="lg">
         <Box
           sx={{
-            p: { md: 8 },
-            py: { xs: 8, md: 16 },
+            // p: { md: 8 },
+            // py: { xs: 8, md: 16 },
             display: 'flex',
             justifyContent: 'center',
           }}
         >
-          <Grid container spacing={{ xs: 0.5, md: 2 }} maxWidth={800}>
+          <Grid container spacing={{ xs: 0.5, md: 2 }} maxWidth={600}>
+            <Grid item xs={12}>
+              <Typography sx={{ mt: 8 }} fontWeight={700} variant="h4">Bet a Friend</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography sx={{ mt: -1.75 }} variant="h6">Who will have more points by the end of this week?</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography sx={{ mt: 2 }} variant="h6">Who are you challenging?</Typography>
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="To"
+                label="@username"
                 variant="outlined"
                 onChange={(e) => setTo(e.target.value)}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
+              <Typography sx={{ mt: 2 }} variant="h6">What token?</Typography>
+            </Grid>
+            <Grid item xs={12}>
               <FormControl fullWidth>
                 <InputLabel id="token-select-label">Token</InputLabel>
                 <Select
@@ -103,7 +115,10 @@ export default function Home() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
+              <Typography sx={{ mt: 2 }}  variant="h6">How much?</Typography>
+            </Grid>
+            <Grid item xs={12}>
               <TextField
                 fullWidth
                 label="Amount"
@@ -122,6 +137,7 @@ export default function Home() {
               <Button
                 size="large"
                 variant="outlined"
+                sx={{ mt: 2 }}
                 disabled={
                   txnOngoing ||
                   tokensLoading ||
@@ -154,7 +170,7 @@ export default function Home() {
                   }
                 }}
               >
-                Send Token
+                Place Bet
               </Button>
             </Grid>
           </Grid>
