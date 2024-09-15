@@ -6,8 +6,12 @@ import { neynar } from "frog/middlewares"
 import { createSystem } from 'frog/ui'
 import { handle } from 'frog/vercel'
 import OpenAI from "openai"
-// import { useState } from 'hono/jsx'
+import dotenv from 'dotenv'
+dotenv.config()
+import { useState } from 'hono/jsx'
 
+const [openaiResponse, setOpenaiResponse] = useState<any>();
+const [translation, setTranslation] = useState<any>();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, dangerouslyAllowBrowser: true });
 
 const openAIPayload = `
@@ -143,7 +147,8 @@ app.frame('/translation', async (c) => {
     ],
     model: "gpt-3.5-turbo",
   });
-  let openaiResponse = JSON.parse(completion.choices[0].message.content!).translation;
+  // setOpenaiResponse(JSON.parse(completion.choices[0].message.content!));
+  setTranslation(JSON.parse(completion.choices[0].message.content!).translation);
   return c.res({
     action: '/phrases',
     image: (
@@ -190,7 +195,7 @@ app.frame('/translation', async (c) => {
               size="20"
               color="blue"
             >
-              {openaiResponse}
+              {translation}
             </Text>
           </div>
         </div>
@@ -249,6 +254,7 @@ app.frame('/phrases', (c) => {
               size="20"
               color="blue"
             >
+              {/* {openaiResponse.phrase_translation} */}
               Sample translation text goes here. This is where the translated content will be displayed.
             </Text>
           </div>
