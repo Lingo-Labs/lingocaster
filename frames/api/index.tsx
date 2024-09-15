@@ -224,12 +224,20 @@ app.frame('/translation', async (c) => {
 app.frame('/phrases', (c) => {
   const { deriveState } = c;
   const state = deriveState((previousState) => {
-    // No changes needed, just access the state
-  });
+ });
 
   const phraseTranslation = state.openaiResponse?.phrase_translation || {};
-  const entries = Object.entries(phraseTranslation);
-  const displayEntries = entries.slice(0, 5);  // Take up to 5 entries
+  const firstEntry = Object.entries(phraseTranslation)[0] || ['', ''];
+  const [english, spanish] = firstEntry;
+
+  const secondEntry = Object.entries(phraseTranslation)[1] || ['', ''];
+  const [english2, spanish2] = secondEntry;
+
+  const thirdEntry = Object.entries(phraseTranslation)[2] || ['', ''];
+  const [english3, spanish3] = thirdEntry;
+
+  const forthEntry = Object.entries(phraseTranslation)[3] || ['', ''];
+  const [english4, spanish4] = forthEntry;
 
   return c.res({
     image: (
@@ -253,7 +261,7 @@ app.frame('/phrases', (c) => {
             weight="700"
             color="white"
           >
-            Here's what each phrases mean:
+            Here's what each phrase means:
           </Text>
         </div>
 
@@ -270,8 +278,7 @@ app.frame('/phrases', (c) => {
             overflowY: 'auto',
           }}
         >
-          {displayEntries.map(([english, spanish], index) => (
-            <div key={index} style={{ display: 'flex', flexDirection: 'row' }}>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={{ display: 'flex', marginRight: '10px' }}>
               <Text
                 font="default"
@@ -288,10 +295,75 @@ app.frame('/phrases', (c) => {
               color="blue"
               weight="400"
             >
-              {` ${spanish}`}
+              {`${spanish}`}
             </Text>
           </div>
-          ))}
+          {secondEntry && (
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', marginRight: '10px' }}>
+              <Text
+                font="default"
+                size="18"
+                color="blue"
+                weight="700"
+              >
+                {`${english2}:`}
+              </Text>
+            </div>
+            <Text
+              font="default"
+              size="18"
+              color="blue"
+              weight="400"
+            >
+              {`${spanish2}`}
+            </Text>
+          </div>
+          )}
+          {thirdEntry && (
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', marginRight: '10px' }}>
+              <Text
+                font="default"
+                size="18"
+                color="blue"
+                weight="700"
+              >
+                {`${english3}:`}
+              </Text>
+            </div>
+            <Text
+              font="default"
+              size="18"
+              color="blue"
+              weight="400"
+            >
+              {`${spanish3}`}
+            </Text>
+          </div>
+          )}
+          {forthEntry && (
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', marginRight: '10px' }}>
+              <Text
+                font="default"
+                size="18"
+                color="blue"
+                weight="700"
+              >
+                {`${english4}:`}
+              </Text>
+            </div>
+            <Text
+              font="default"
+              size="18"
+              color="blue"
+              weight="400"
+            >
+              {`${spanish4}`}
+            </Text>
+          </div>
+          )}
         </div>
       </div>
     ),
