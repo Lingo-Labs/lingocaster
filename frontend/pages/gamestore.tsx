@@ -16,7 +16,7 @@ export default function Home() {
             justifyContent: 'center',
           }}
         >
-          <Grid container spacing={{ xs: 0.5, md: 2 }} maxWidth={1000}>
+          <Grid container spacing={{ xs: 0.5, md: 2 }} maxWidth={785}>
             <Grid item xs={12}>
               <Typography sx={{ mt: 8 }} fontWeight={700} variant="h4">Game Store</Typography>
             </Grid>
