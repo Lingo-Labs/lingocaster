@@ -6,7 +6,6 @@ import {
   Container,
   Divider,
   Grid,
-  Link,
   Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
@@ -48,28 +47,16 @@ export default function Home() {
   return (
     <Box>
       <Container maxWidth="lg">
-        <Box
-          sx={{
-            p: 4,
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <Typography fontSize={{ xs: 12, md: 16 }}>
-            Need SOL or PYUSD? Get them from their respective faucets -{' '}
-            <Link href="https://faucet.solana.com/">Solana Faucet</Link> and{' '}
-            <Link href="https://faucet.paxos.com/">Paxos Faucet</Link>
-          </Typography>
-        </Box>
-        <Box>
+        <Box sx={{ mt: 8 }}>
           <Grid container>
             <Grid item xs={8}>
-              <Typography textAlign="left" variant="h6" component={'h1'}>
-                Tokens Held
+              <Typography sx={{ fontWeight: 'bold', pl: 6 }} textAlign="left" variant="h4" component={'h1'}>
+                My Tokens
               </Typography>
             </Grid>
             <Grid item xs={4} textAlign="right">
               <Button
+                sx={{ pr: 6, pt: 6 }}
                 color="inherit"
                 onClick={() => {
                   loadTokens();
@@ -81,7 +68,10 @@ export default function Home() {
             </Grid>
           </Grid>
           <Box>
-            <List sx={{ bgcolor: 'background.paper', p: { md: 4 } }}>
+            <List sx={{ 
+              bgcolor: 'background.paper', 
+              p: { md: '0 32px 32px 32px' } 
+            }}>
               {tokens.length && !tokensLoading
                 ? tokens
                     .map((token, idx) => {
