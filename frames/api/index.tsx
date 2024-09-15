@@ -149,6 +149,7 @@ app.frame('/translation', async (c) => {
   });
   // setOpenaiResponse(JSON.parse(completion.choices[0].message.content!));
   setTranslation(JSON.parse(completion.choices[0].message.content!).translation);
+  let gg = JSON.parse(completion.choices[0].message.content!).translation;
   return c.res({
     action: '/phrases',
     image: (
@@ -195,7 +196,7 @@ app.frame('/translation', async (c) => {
               size="20"
               color="blue"
             >
-              {JSON.parse(completion.choices[0].message.content!).translation}
+              {gg}
             </Text>
           </div>
         </div>
