@@ -72,7 +72,16 @@ export const app = new Frog({
 
 // app.use('/*', serveStatic({ root: './public' }))
 
-app.frame('/', (c) => {
+app.frame('/', async (c) => {
+  const castText = c.var.cast?.text;
+  const completion = await openai.chat.completions.create({
+    messages: [
+      { role: "system", content: openAIPayload + `\n${castText}` },
+      // { role: "user", content: `Translate this to English: ${castText}` }
+    ],
+    model: "gpt-3.5-turbo",
+  });
+  setOpenaiResponse(JSON.parse(completion.choices[0].message.content!));
   return c.res({
     action: '/translation',
     image: (
@@ -138,16 +147,8 @@ app.frame('/', (c) => {
   })
 })
 
-app.frame('/translation', async (c) => {
-  const castText = c.var.cast?.text;
-  const completion = await openai.chat.completions.create({
-    messages: [
-      { role: "system", content: openAIPayload + `\n${castText}` },
-      // { role: "user", content: `Translate this to English: ${castText}` }
-    ],
-    model: "gpt-3.5-turbo",
-  });
-  setOpenaiResponse(JSON.parse(completion.choices[0].message.content!));
+app.frame('/translation', (c) => {
+  
   const translation = openaiResponse.translation;
   // setTranslation(JSON.parse(completion.choices[0].message.content!).translation);
   // let gg = JSON.parse(completion.choices[0].message.content!).translation;
