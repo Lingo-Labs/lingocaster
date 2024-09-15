@@ -227,7 +227,7 @@ app.frame('/phrases', (c) => {
     // No changes needed, just access the state
   });
 
-  const phraseTranslation = state.openaiResponse?.phrase_translation || '';
+  const phraseTranslation = state.openaiResponse?.phrase_translation || {};
 
   return c.res({
     image: (
@@ -259,24 +259,26 @@ app.frame('/phrases', (c) => {
         <div
           style={{
             display: 'flex',
+            flexDirection: 'column',
             background: 'white',
             borderRadius: '15px',
-            lineHeight: '1',
             flexGrow: 1,
             padding: '20px',
             width: '100%',
+            overflowY: 'auto',
           }}
         >
-          {/* Blue sample text */}
-          <div style={{ display: 'flex', color: 'black' }}>
-            <Text
-              font="default"
-              size="20"
-              color="blue"
-            >
-              {phraseTranslation}
-            </Text>
-          </div>
+          {Object.entries(phraseTranslation).map(([english, spanish], index) => (
+            <div key={index} style={{ marginBottom: '10px' }}>
+              <Text
+                font="default"
+                size="18"
+                color="blue"
+              >
+                <span style={{ fontWeight: 'bold' }}>{english}</span>: {spanish as string}
+              </Text>
+            </div>
+          ))}
         </div>
       </div>
     ),
