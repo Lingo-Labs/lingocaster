@@ -424,7 +424,14 @@ app.frame('/quiztime', (c) => {
 })
 
 app.frame('/q1', (c) => {
-  const answerOptions = ['Apple', 'Banana', 'Cherry', 'Date'];
+  const { deriveState } = c;
+  const state = deriveState((previousState) => {
+  });
+
+  const q1 = state.openaiResponse?.multiple_choice_questions[0].question;
+  const answers = state.openaiResponse?.multiple_choice_questions[0].answers;
+
+
 
   return c.res({
     action: '/q2',
@@ -449,12 +456,12 @@ app.frame('/q1', (c) => {
             weight="700"
             color="white"
           >
-            What does ___ mean?
+            {q1}
           </Text>
         </div>
 
         {/* Answer options */}
-        {answerOptions.map((option, index) => (
+        {answers.map((option: any, index: any) => (
           <div
             key={index}
             style={{
@@ -479,10 +486,10 @@ app.frame('/q1', (c) => {
       </div>
     ),
     intents: [
-      <Button>a</Button>,
-      <Button>b</Button>,
-      <Button>c</Button>,
-      <Button>d</Button>,
+      <Button value={answers[0]}>a</Button>,
+      <Button value={answers[1]}>b</Button>,
+      <Button value={answers[2]}>c</Button>,
+      <Button value={answers[3]}>d</Button>,
     ],
   })
 })
