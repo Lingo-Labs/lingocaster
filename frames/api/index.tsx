@@ -1,10 +1,27 @@
 import { serveStatic } from '@hono/node-server/serve-static'
 import { Button, Frog } from 'frog'
 import { devtools } from 'frog/dev'
-import { neynar } from 'frog/hubs'
+import { neynar as neynarHub } from 'frog/hubs'
+import { neynar } from "frog/middlewares"
 import { createSystem } from 'frog/ui'
 import { handle } from 'frog/vercel'
+import OpenAI from "openai"
 // import { useState } from 'hono/jsx'
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, dangerouslyAllowBrowser: true });
+
+const openAIPayload = `
+You're a translation bot that helps people learn Spanish, similar to Duolingo. In ONLY JSON, respond with:
+
+1. Translation of the text to Spanish
+2. Word/phrase by word/phrase translation (eg. give me a dictionary like "Hello" --> "Hola")
+3. Generate 2 multiple choice questions (question in English, with 4 Spanish answers, no a/b/c/d in front of responses), and the correct answer (eg. it can be as simple as "Translate [word]" or "What does [word] mean")
+4. Generate 2 true/false questions similar to the multiple choice (eg. [phrase] means [phrase] in Spanish), and the correct answer as a string (eg. "true"/"false")
+
+Send me all of this in JSON. The sections should be "translation", "phrase_translation", "multiple_choice_questions", and "true_false_questions"
+
+Here's the text:
+`;
 
 const { Image, Text, vars } = createSystem({
   fonts: {
@@ -38,11 +55,16 @@ const { Image, Text, vars } = createSystem({
 
 export const app = new Frog({
   title: 'Lingocaster',
-  hub: neynar({ apiKey: 'NEYNAR_FROG_FM' }),
+  hub: neynarHub({ apiKey: 'NEYNAR_FROG_FM' }),
   ui: { vars },
   assetsPath: "/",
   basePath: "/api",
-})
+}).use(
+  neynar({
+    apiKey: "NEYNAR_FROG_FM",
+    features: ["interactor", "cast"],
+  })
+);
 
 // app.use('/*', serveStatic({ root: './public' }))
 
@@ -112,7 +134,16 @@ app.frame('/', (c) => {
   })
 })
 
-app.frame('/translation', (c) => {
+app.frame('/translation', async (c) => {
+  const castText = c.var.cast?.text;
+  const completion = await openai.chat.completions.create({
+    messages: [
+      { role: "system", content: openAIPayload + `\n${castText}` },
+      // { role: "user", content: `Translate this to English: ${castText}` }
+    ],
+    model: "gpt-3.5-turbo",
+  });
+  let openaiResponse = JSON.parse(completion.choices[0].message.content!).translation;
   return c.res({
     action: '/phrases',
     image: (
@@ -159,7 +190,7 @@ app.frame('/translation', (c) => {
               size="20"
               color="blue"
             >
-              Sample translation text goes here. This is where the translated content will be displayed.
+              {openaiResponse}
             </Text>
           </div>
         </div>
