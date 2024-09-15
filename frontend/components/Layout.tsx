@@ -16,9 +16,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { useRouter } from 'next/router';
-import { Button, Container, InputAdornment, TextField } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 import { usePortal } from '@/providers/portal';
-import { ContentCopy, Pending, Send } from '@mui/icons-material';
+import { ContentCopy } from '@mui/icons-material';
 import { useSnackbar } from '@/providers/snackbar';
 
 const DRAWER_WIDTH = 240;
@@ -121,39 +121,38 @@ export default function Layout({ children }: { children: ReactNode }) {
               <Box sx={{ flexGrow: 1 }}></Box>
               <Box>
                 {solanaAddress ? (
-                  <TextField
-                    size="small"
-                    label="Solana Address"
-                    value={solanaAddress}
-                    spellCheck={false}
-                    InputProps={{
-                      sx: {
-                        color: 'white',
-                      },
-                      disableUnderline: true,
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            size="small"
-                            onClick={() =>
-                              navigator.clipboard.writeText(solanaAddress)
-                            }
-                            edge="end"
-                          >
-                            <ContentCopy fontSize="small" />
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
+                  <Box sx={{ display: 'flex', alignItems: 'center', padding: '4px 8px', borderRadius: '4px' }}>
+                    <Typography 
+                      variant="subtitle1" 
+                      sx={{ 
+                        marginRight: '8px', 
+                        color: 'white', 
+                        fontWeight: 'bold',
+                        fontSize: '1.1rem'
+                      }}
+                    >
+                      {`${solanaAddress.slice(0, 4)}...${solanaAddress.slice(-4)}`}
+                    </Typography>
+                    <IconButton
+                      size="small"
+                      onClick={() => navigator.clipboard.writeText(solanaAddress)}
+                      sx={{ color: 'white' }}
+                    >
+                      <ContentCopy fontSize="small" />
+                    </IconButton>
+                  </Box>
                 ) : (
                   <Button
                     color="inherit"
                     variant="outlined"
+                    sx={{ 
+                      fontWeight: 'bold',
+                      fontSize: '1.1rem',
+                      borderRadius: '18px'
+                    }}
                     onClick={async () => await generateSolanaAddress()}
-                    endIcon={generatingSolanaAddress ? <Pending /> : <Send />}
                   >
-                    Get Solana Wallet
+                    Connect Wallet
                   </Button>
                 )}
               </Box>
