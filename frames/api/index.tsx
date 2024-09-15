@@ -11,7 +11,7 @@ dotenv.config()
 import { useState } from 'hono/jsx'
 
 const [openaiResponse, setOpenaiResponse] = useState<any>();
-const [translation, setTranslation] = useState<any>();
+// const [translation, setTranslation] = useState<any>();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, dangerouslyAllowBrowser: true });
 
 const openAIPayload = `
@@ -147,9 +147,10 @@ app.frame('/translation', async (c) => {
     ],
     model: "gpt-3.5-turbo",
   });
-  // setOpenaiResponse(JSON.parse(completion.choices[0].message.content!));
-  setTranslation(JSON.parse(completion.choices[0].message.content!).translation);
-  let gg = JSON.parse(completion.choices[0].message.content!).translation;
+  setOpenaiResponse(JSON.parse(completion.choices[0].message.content!));
+  const translation = openaiResponse.translation;
+  // setTranslation(JSON.parse(completion.choices[0].message.content!).translation);
+  // let gg = JSON.parse(completion.choices[0].message.content!).translation;
   return c.res({
     action: '/phrases',
     image: (
@@ -196,7 +197,7 @@ app.frame('/translation', async (c) => {
               size="20"
               color="blue"
             >
-              {gg}
+              {translation}
             </Text>
           </div>
         </div>
@@ -210,6 +211,7 @@ app.frame('/translation', async (c) => {
 })
 
 app.frame('/phrases', (c) => {
+  const phrase = openaiResponse.phrase_translation;
   return c.res({
     image: (
       <div
@@ -256,7 +258,7 @@ app.frame('/phrases', (c) => {
               color="blue"
             >
               {/* {openaiResponse.phrase_translation} */}
-              {translation}
+              {phrase}
               {/* Sample translation text goes here. This is where the translated content will be displayed. */}
             </Text>
           </div>
