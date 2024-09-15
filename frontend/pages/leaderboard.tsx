@@ -21,7 +21,7 @@ export default function Home() {
               <Typography sx={{ mt: 8 }} fontWeight={700} variant="h4">Leaderboard</Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography sx={{ mt: -1.75 }} variant="h6">A digital collection of your streaks and milestones!</Typography>
+              <Typography sx={{ mt: -1.75 }} variant="h6">Weekly points leaders</Typography>
             </Grid>
           </Grid>
         </Box>
