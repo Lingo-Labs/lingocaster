@@ -257,11 +257,11 @@ app.frame('/phrases', (c) => {
         <div style={{ display: 'flex', marginBottom: '10px' }}>
           <Text
             font="default"
-            size="24"
+            size="32"
             weight="700"
             color="white"
           >
-            Here's the important words/phrases:
+            Important words/phrases:
           </Text>
         </div>
 
@@ -431,8 +431,6 @@ app.frame('/q1', (c) => {
   const q1 = state.openaiResponse?.multiple_choice_questions[0].question;
   const answers = state.openaiResponse?.multiple_choice_questions[0].answers;
 
-
-
   return c.res({
     action: '/q2',
     image: (
@@ -549,7 +547,12 @@ app.frame('/q1', (c) => {
 })
 
 app.frame('/q2', (c) => {
-  const answerOptions = ['Bob', 'Mary', 'John', 'Jane'];
+  const { deriveState } = c;
+  const state = deriveState((previousState) => {
+  });
+
+  const q2 = state.openaiResponse?.multiple_choice_questions[1].question;
+  const answers = state.openaiResponse?.multiple_choice_questions[1].answers;
 
   return c.res({
     action: '/q3',
@@ -574,14 +577,12 @@ app.frame('/q2', (c) => {
             weight="700"
             color="white"
           >
-            What is the name of the person who is ___?
+            {q2}
           </Text>
         </div>
 
         {/* Answer options */}
-        {answerOptions.map((option, index) => (
-          <div
-            key={index}
+        <div
             style={{
               display: 'flex',
               marginBottom: '15px',
@@ -597,10 +598,66 @@ app.frame('/q2', (c) => {
               size="18"
               color="white"
             >
-              {`${String.fromCharCode(97 + index)}. ${option}`}
+              {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
             </Text>
           </div>
-        ))}
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
+            </Text>
+          </div>
       </div>
     ),
     intents: [
@@ -614,6 +671,9 @@ app.frame('/q2', (c) => {
 
 app.frame('/q3', (c) => {
   const answerOptions = ['True', 'False'];
+  const { deriveState } = c;
+  const state = deriveState((previousState) => {});
+  const q3 = state.openaiResponse?.true_false_questions[0].question;
 
   return c.res({
     action: '/q4',
@@ -638,7 +698,7 @@ app.frame('/q3', (c) => {
             weight="700"
             color="white"
           >
-            The sky is always blue.
+            {q3}
           </Text>
         </div>
 
@@ -676,6 +736,9 @@ app.frame('/q3', (c) => {
 
 app.frame('/q4', (c) => {
   const answerOptions = ['True', 'False'];
+  const { deriveState } = c;
+  const state = deriveState((previousState) => {});
+  const q4 = state.openaiResponse?.true_false_questions[1].question;
 
   return c.res({
     action: '/points',
@@ -700,7 +763,7 @@ app.frame('/q4', (c) => {
             weight="700"
             color="white"
           >
-            The product of 2 and 2 is 3.
+            {q4}
           </Text>
         </div>
 
