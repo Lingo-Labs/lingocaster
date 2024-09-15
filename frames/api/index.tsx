@@ -480,9 +480,7 @@ app.frame('/q1', (c) => {
               {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
             </Text>
           </div>
-        {/* {answers.map((option: any, index: any) => (
           <div
-            key={index}
             style={{
               display: 'flex',
               marginBottom: '15px',
@@ -498,10 +496,47 @@ app.frame('/q1', (c) => {
               size="18"
               color="white"
             >
-              {`${String.fromCharCode(97 + index)}. ${option}`}
+              {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
             </Text>
           </div>
-        ))} */}
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
+          >
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
+            </Text>
+          </div>
       </div>
     ),
     intents: [
