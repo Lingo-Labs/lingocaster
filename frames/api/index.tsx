@@ -15,7 +15,7 @@ const openAIPayload = `
 You're a translation bot that helps people learn Spanish, similar to Duolingo. In ONLY JSON, respond with:
 
 1. Translation of the text to Spanish
-2. Word/phrase by word/phrase translation (eg. give me a dictionary like "Hello" --> "Hola")
+2. Translations of the 4 most important words/phrases (eg. give me a dictionary like "Hello" --> "Hola")
 3. Generate 2 multiple choice questions (question in English, with 4 Spanish answers, no a/b/c/d in front of responses), and the correct answer (eg. it can be as simple as "Translate [word]" or "What does [word] mean")
 4. Generate 2 true/false questions similar to the multiple choice (eg. [phrase] means [phrase] in Spanish), and the correct answer as a string (eg. "true"/"false")
 
@@ -257,11 +257,11 @@ app.frame('/phrases', (c) => {
         <div style={{ display: 'flex', marginBottom: '10px' }}>
           <Text
             font="default"
-            size="32"
+            size="24"
             weight="700"
             color="white"
           >
-            Here's what each phrase means:
+            Here's the important words/phrases:
           </Text>
         </div>
 
