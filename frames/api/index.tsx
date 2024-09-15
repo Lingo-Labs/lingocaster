@@ -195,7 +195,7 @@ app.frame('/translation', async (c) => {
               size="20"
               color="blue"
             >
-              {translation}
+              {JSON.parse(completion.choices[0].message.content!).translation}
             </Text>
           </div>
         </div>
@@ -255,7 +255,8 @@ app.frame('/phrases', (c) => {
               color="blue"
             >
               {/* {openaiResponse.phrase_translation} */}
-              Sample translation text goes here. This is where the translated content will be displayed.
+              {translation}
+              {/* Sample translation text goes here. This is where the translated content will be displayed. */}
             </Text>
           </div>
         </div>
