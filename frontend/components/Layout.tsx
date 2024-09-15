@@ -28,8 +28,16 @@ const DRAWER_ITEMS = [
     link: '/',
   },
   {
-    name: 'Send Tokens',
-    link: '/send',
+    name: 'My NFTs',
+    link: '/nfts',
+  },
+  {
+    name: 'Game Store',
+    link: '/gamestore',
+  },
+  {
+    name: 'Bet a Friend',
+    link: '/bet',
   },
 ];
 
