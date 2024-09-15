@@ -224,11 +224,12 @@ app.frame('/translation', async (c) => {
 app.frame('/phrases', (c) => {
   const { deriveState } = c;
   const state = deriveState((previousState) => {
- });
+    // No changes needed, just access the state
+  });
 
   const phraseTranslation = state.openaiResponse?.phrase_translation || {};
-  const firstEntry = Object.entries(phraseTranslation)[0] || ['', ''];
-  const [english, spanish] = firstEntry;
+  const entries = Object.entries(phraseTranslation);
+  const displayEntries = entries.slice(0, 5);  // Take up to 5 entries
 
   return c.res({
     image: (
@@ -252,7 +253,7 @@ app.frame('/phrases', (c) => {
             weight="700"
             color="white"
           >
-            Here's what this phrase means:
+            Here's what each phrases means:
           </Text>
         </div>
 
@@ -269,26 +270,28 @@ app.frame('/phrases', (c) => {
             overflowY: 'auto',
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div style={{ display: 'flex', marginRight: '10px' }}>
+          {displayEntries.map(([english, spanish], index) => (
+            <div key={index} style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
+              <div style={{ display: 'flex', marginRight: '10px' }}>
+                <Text
+                  font="default"
+                  size="18"
+                  color="blue"
+                  weight="700"
+                >
+                  {`${english}:`}
+                </Text>
+              </div>
               <Text
                 font="default"
                 size="18"
                 color="blue"
-                weight="700"
+                weight="400"
               >
-                {`${english}:`}
+                {` ${spanish}`}
               </Text>
             </div>
-            <Text
-              font="default"
-              size="18"
-              color="blue"
-              weight="400"
-            >
-              {` ${spanish}`}
-            </Text>
-          </div>
+          ))}
         </div>
       </div>
     ),
