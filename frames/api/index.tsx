@@ -298,7 +298,7 @@ app.frame('/phrases', (c) => {
               {`${spanish}`}
             </Text>
           </div>
-          {secondEntry && (
+          {/* {secondEntry && (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={{ display: 'flex', marginRight: '10px' }}>
               <Text
@@ -363,7 +363,7 @@ app.frame('/phrases', (c) => {
               {`${spanish4}`}
             </Text>
           </div>
-          )}
+          )} */}
         </div>
       </div>
     ),
