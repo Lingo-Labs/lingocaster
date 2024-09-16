@@ -8,10 +8,20 @@ Warpcast: https://warpcast.com/lingocaster
 # 🗣️ About
 Lingocaster is a language learning game built on Farcaster. Learn a new language, earn rewards with streaks, & challenge friends in PYUSD! The game itself is built using Farcaster frames triggered by this [cast action](https://warpcast.com/~/add-cast-action?url=https://lingocaster.vercel.app/api/action). The AI translates a post and creates quiz questions for users, who can then play for daily points and compete on the leaderboard. With PYUSD, users can bet on their own streak, against a friend, or purchase in-game rewards.  
 
+Some problems with current language learning apps that Lingocaster solves:
+
 <img width="1440" alt="Screenshot 2024-09-15 at 11 54 14 PM" src="https://github.com/user-attachments/assets/60d53165-bd1e-463b-88ef-2e0ff49ea771">
+<br/>
+<br/>
+
+Using OpenAI, Lingocaster creates personalized learning that is integrated into real-world, crypto-native contexts. PYUSD lets us leverage PayPal’s large user base, so users can have a smoother + safer payments flow. By building on Farcaster, we create experiences that make language learning more social + cultural, which also helps get more users through viral loops.
+
+
 <img width="1440" alt="Screenshot 2024-09-15 at 11 54 28 PM" src="https://github.com/user-attachments/assets/0cb556ee-8bee-4a1a-901f-b766c4ab0832">
 
 ## Farcaster Frames
+When you're scrolling through the Warpcast feed and find an interesting cast, you can click the cast action to start a game. This will let you earn points for the day!
+
 <img width="1204" alt="Screenshot 2024-09-16 at 11 30 38 AM" src="https://github.com/user-attachments/assets/70cd0dc5-9df1-4518-a731-933e7d5cec90">
 <img width="1288" alt="Screenshot 2024-09-16 at 11 22 50 AM" src="https://github.com/user-attachments/assets/db2fad33-32c1-4523-ad8e-8e9c4b570884">
 <img width="1289" alt="Screenshot 2024-09-16 at 11 23 00 AM" src="https://github.com/user-attachments/assets/75f546d7-39e7-4ffd-94f8-f1c5405a9b74">
