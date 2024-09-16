@@ -27,18 +27,28 @@ When you're scrolling through the Warpcast feed and find an interesting cast, yo
 <img width="1289" alt="Screenshot 2024-09-16 at 11 23 00 AM" src="https://github.com/user-attachments/assets/75f546d7-39e7-4ffd-94f8-f1c5405a9b74">
 
 ## Betting
+Users can either bet on their own streak and earn PYUSD from a weighted pool, or bet against a friend. When they bet a friend, a bot posts a challenge on their behalf - the bet will only go through if the challenged user accepts! Challenging a user is public, which introduces a viral loop + social element to the game to get more users.
+
 <img width="1232" alt="Screenshot 2024-09-16 at 2 03 12 PM" src="https://github.com/user-attachments/assets/e3256673-fe3e-453d-a0e7-2b87fbcdcf55">
 
 ## Dashboard
+The dashboard is where you can see the amount of each token you hold!
+
 <img width="1440" alt="Screenshot 2024-09-16 at 11 43 58 AM" src="https://github.com/user-attachments/assets/062975f5-bc7b-4ee2-bb58-30039ee9c117">
 
 ## NFTs
+The NFTs page show the NFTs you've collected, which represent streaks and milestones you've achieved!
+
 <img width="1440" alt="Screenshot 2024-09-16 at 11 44 22 AM" src="https://github.com/user-attachments/assets/2fcf75bb-2355-41c2-aa7e-c9fab07c5b66">
 
 ## Game Store
+The game store is where you can use PYUSD to purchase in-game rewards like streak freezes, ad removal, double points, and more!
+
 <img width="1440" alt="Screenshot 2024-09-16 at 11 44 15 AM" src="https://github.com/user-attachments/assets/c961a634-c069-4c6b-9eaa-9da06ec5e712">
 
 ## Leaderboard
+The leaderboard shows the top players by weekly points.
+
 <img width="1440" alt="Screenshot 2024-09-16 at 11 44 29 AM" src="https://github.com/user-attachments/assets/4b090382-d1f6-4596-a0df-f20777d6bbfc">
 
 
