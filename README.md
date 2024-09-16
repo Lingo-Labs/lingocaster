@@ -27,7 +27,7 @@ When you're scrolling through the Warpcast feed and find an interesting cast, yo
 <img width="1289" alt="Screenshot 2024-09-16 at 11 23 00 AM" src="https://github.com/user-attachments/assets/75f546d7-39e7-4ffd-94f8-f1c5405a9b74">
 
 ## Betting
-<img width="1440" alt="Screenshot 2024-09-16 at 11 45 11 AM" src="https://github.com/user-attachments/assets/508df09c-5fe0-4c4b-bb16-1cec062950ad">
+<img width="1232" alt="Screenshot 2024-09-16 at 2 03 12 PM" src="https://github.com/user-attachments/assets/e3256673-fe3e-453d-a0e7-2b87fbcdcf55">
 
 ## Dashboard
 <img width="1440" alt="Screenshot 2024-09-16 at 11 43 58 AM" src="https://github.com/user-attachments/assets/062975f5-bc7b-4ee2-bb58-30039ee9c117">
