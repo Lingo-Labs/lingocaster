@@ -59,8 +59,6 @@ export default function Home() {
       <Container maxWidth="lg">
         <Box
           sx={{
-            // p: { md: 8 },
-            // py: { xs: 8, md: 16 },
             display: 'flex',
             justifyContent: 'center',
           }}

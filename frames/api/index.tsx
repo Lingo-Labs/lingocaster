@@ -78,8 +78,6 @@ export const app = new Frog<{ State: State }>({
   })
 );
 
-// app.use('/*', serveStatic({ root: './public' }))
-
 app.frame('/', (c) => {
   return c.res({
     action: '/translation',
@@ -982,7 +980,6 @@ app.frame('/bet', (c) => {
                 size="18"
                 weight="400"
                 color="white"
-              // style={{ textAlign: 'center', marginTop: '10px' }}
               >
                 Play for 30 days in a row and earn PYUSD from a weighted pool!
               </Text>
@@ -1012,7 +1009,6 @@ app.frame('/bet', (c) => {
                 size="18"
                 weight="400"
                 color="white"
-              // style={{ textAlign: 'center', marginTop: '10px' }}
               >
                 Challenge a friend and set your own terms in PYUSD!
 
