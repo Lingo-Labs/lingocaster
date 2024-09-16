@@ -13,9 +13,9 @@ import {
   Typography,
 } from '@mui/material';
 import { useSnackbar } from '@/providers/snackbar';
-import { NeynarAPIClient } from '@neynar/nodejs-sdk';
+// import { NeynarAPIClient } from '@neynar/nodejs-sdk';
 
-const neynarClient = new NeynarAPIClient(process.env.NEXT_PUBLIC_NEYNAR_API_KEY!);
+// const neynarClient = new NeynarAPIClient(process.env.NEXT_PUBLIC_NEYNAR_API_KEY!);
 
 export default function Home() {
   const portal = usePortal();
@@ -163,15 +163,15 @@ export default function Home() {
                       tokenAmount,
                     );
 
-                    await neynarClient.publishCast(
-                      process.env.NEXT_PUBLIC_SIGNER_UUID!,
-                      `@${interactor} is challenging @${to} to a bet of ${tokenAmount} PYUSD\n\nWill @${to} accept? 👀`,
-                      {
-                        embeds: [{
-                          url: `https://lingocaster.vercel.app/api`
-                        }]
-                      }
-                    );
+                    // await neynarClient.publishCast(
+                    //   process.env.NEXT_PUBLIC_SIGNER_UUID!,
+                    //   `@${interactor} is challenging @${to} to a bet of ${tokenAmount} PYUSD\n\nWill @${to} accept? 👀`,
+                    //   {
+                    //     embeds: [{
+                    //       url: `https://lingocaster.vercel.app/api`
+                    //     }]
+                    //   }
+                    // );
 
                     snackbar.setSnackbarOpen(true);
                     snackbar.setSnackbarContent({
