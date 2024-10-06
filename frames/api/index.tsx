@@ -553,10 +553,10 @@ app.frame('/q2', (c) => {
 
   const q2 = state.openaiResponse?.multiple_choice_questions[1].question;
   const answers = state.openaiResponse?.multiple_choice_questions[1].answers;
-  const correctQ1Answer = state.openaiResponse?.multiple_choice_questions[0].correct_answer;
-  if (buttonValue === correctQ1Answer) {
-    state.points += 100;
-  }
+  // const correctQ1Answer = state.openaiResponse?.multiple_choice_questions[0].correct_answer;
+  // if (buttonValue === correctQ1Answer) {
+  //   state.points += 100;
+  // }
   return c.res({
     action: '/q3',
     image: (
