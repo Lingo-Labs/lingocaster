@@ -56,10 +56,10 @@ The leaderboard shows the top players by weekly points.
 # 🗺️ Roadmap
 - Build automated DMs for user retention
 - Update frontends with new designs:
-<img width="300" alt="lingocaster" src="https://github.com/user-attachments/assets/64f8843b-c4c0-49f7-9ba8-73d2511cd7e5">
-<img width="300" alt="clickcastaction" src="https://github.com/user-attachments/assets/2d82afb8-22ba-4d43-9adb-73da6d198e50">
-<img width="300" alt="Screenshot 2024-09-24 at 3 40 55 PM" src="https://github.com/user-attachments/assets/42a411d6-711b-4632-8d9c-d626918fc2a8">
-<img width="300" alt="Screenshot 2024-09-24 at 3 41 06 PM" src="https://github.com/user-attachments/assets/1f0e6b89-4236-4a0a-b6d0-8c9dd65d33c5">
+<img width="400" alt="lingocaster" src="https://github.com/user-attachments/assets/64f8843b-c4c0-49f7-9ba8-73d2511cd7e5">
+<img width="400" alt="clickcastaction" src="https://github.com/user-attachments/assets/2d82afb8-22ba-4d43-9adb-73da6d198e50">
+<img width="400" alt="Screenshot 2024-09-24 at 3 40 55 PM" src="https://github.com/user-attachments/assets/42a411d6-711b-4632-8d9c-d626918fc2a8">
+<img width="400" alt="Screenshot 2024-09-24 at 3 41 06 PM" src="https://github.com/user-attachments/assets/1f0e6b89-4236-4a0a-b6d0-8c9dd65d33c5">
 
 
 # 📱 Follow Lingocaster!
