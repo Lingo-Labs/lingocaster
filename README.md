@@ -1,7 +1,10 @@
 # 🦉 Lingocaster
-Demo video: https://youtu.be/aS9rpix5Kz4
+Demo video: https://youtu.be/7hYEvz2XIcI
 <br/>
 Warpcast: https://warpcast.com/lingocaster
+
+- 🥈 2nd place winner of the inaugural Global PYUSD Portal Hackathon!
+- 💰 Won $10k + sponsored trip to demo Lingocaster at the Solana Hong Kong Hacker House.
 
 <img width="1440" alt="Screenshot 2024-09-15 at 8 45 46 PM" src="https://github.com/user-attachments/assets/340c3276-a127-4a00-9f0e-6f57deefca0c">
 
@@ -16,8 +19,7 @@ Some problems with current language learning apps that Lingocaster solves:
 
 Using OpenAI, Lingocaster creates personalized learning that is integrated into real-world, crypto-native contexts. PYUSD lets us leverage PayPal’s large user base, so users can have a smoother + safer payments flow. By building on Farcaster, we create experiences that make language learning more social + cultural, which also helps get more users through viral loops.
 
-
-<img width="1440" alt="Screenshot 2024-09-15 at 11 54 28 PM" src="https://github.com/user-attachments/assets/0cb556ee-8bee-4a1a-901f-b766c4ab0832">
+<img width="1241" alt="Screenshot 2024-10-06 at 3 48 51 PM" src="https://github.com/user-attachments/assets/51bf7721-44f1-45d4-ab77-2b93b1ef04fd">
 
 ## Farcaster Frames
 When you're scrolling through the Warpcast feed and find an interesting cast, you can click the cast action to start a game. This will let you earn points for the day!
@@ -50,6 +52,14 @@ The game store is where you can use PYUSD to purchase in-game rewards like strea
 The leaderboard shows the top players by weekly points.
 
 <img width="1440" alt="Screenshot 2024-09-16 at 11 44 29 AM" src="https://github.com/user-attachments/assets/4b090382-d1f6-4596-a0df-f20777d6bbfc">
+
+# 🗺️ Roadmap
+- Build automated DMs for user retention
+- Update frontends with new designs:
+<img width="500" alt="lingocaster" src="https://github.com/user-attachments/assets/64f8843b-c4c0-49f7-9ba8-73d2511cd7e5">
+<img width="500" alt="clickcastaction" src="https://github.com/user-attachments/assets/2d82afb8-22ba-4d43-9adb-73da6d198e50">
+<img width="500" alt="Screenshot 2024-09-24 at 3 40 55 PM" src="https://github.com/user-attachments/assets/42a411d6-711b-4632-8d9c-d626918fc2a8">
+<img width="500" alt="Screenshot 2024-09-24 at 3 41 06 PM" src="https://github.com/user-attachments/assets/1f0e6b89-4236-4a0a-b6d0-8c9dd65d33c5">
 
 
 # 📱 Follow Lingocaster!
