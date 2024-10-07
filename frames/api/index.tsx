@@ -538,24 +538,24 @@ app.frame('/q1', (c) => {
       </div>
     ),
     intents: [
-      <Button >a</Button>,
-      <Button >b</Button>,
-      <Button >c</Button>,
-      <Button >d</Button>,
+      <Button value={answers[0]}>a</Button>,
+      <Button value={answers[1]}>b</Button>,
+      <Button value={answers[2]}>c</Button>,
+      <Button value={answers[3]}>d</Button>,
     ],
   })
 })
 
 app.frame('/q2', (c) => {
-  const { deriveState } = c;
+  const { deriveState, buttonValue } = c;
   const state = deriveState(() => {});
 
   const q2 = state.openaiResponse?.multiple_choice_questions[1].question;
   const answers = state.openaiResponse?.multiple_choice_questions[1].answers;
-  // const correctQ1Answer = state.openaiResponse?.multiple_choice_questions[0].correct_answer;
-  // if (buttonValue === correctQ1Answer) {
-  //   state.points += 100;
-  // }
+  const correctQ1Answer = state.openaiResponse?.multiple_choice_questions[0].correct_answer;
+  if (buttonValue === correctQ1Answer) {
+    state.points += 100;
+  }
   return c.res({
     action: '/q3',
     image: (
@@ -663,24 +663,24 @@ app.frame('/q2', (c) => {
       </div>
     ),
     intents: [
-      <Button>a</Button>,
-      <Button>b</Button>,
-      <Button>c</Button>,
-      <Button>d</Button>,
+      <Button value={answers[0]}>a</Button>,
+      <Button value={answers[1]}>b</Button>,
+      <Button value={answers[2]}>c</Button>,
+      <Button value={answers[3]}>d</Button>,
     ],
   })
 })
 
 app.frame('/q3', (c) => {
   const answerOptions = ['True', 'False'];
-  const { deriveState } = c;
+  const { deriveState, buttonValue } = c;
   const state = deriveState((previousState) => { });
   const q3 = state.openaiResponse?.true_false_questions[0].question;
 
-  // const correctQ2Answer = state.openaiResponse?.multiple_choice_questions[1].correct_answer;
-  // if (buttonValue === correctQ2Answer) {
-  //   state.points += 100;
-  // }
+  const correctQ2Answer = state.openaiResponse?.multiple_choice_questions[1].correct_answer;
+  if (buttonValue === correctQ2Answer) {
+    state.points += 100;
+  }
 
   return c.res({
     action: '/q4',
@@ -812,13 +812,13 @@ app.frame('/q4', (c) => {
 })
 
 app.frame('/points', (c) => {
-  // const { deriveState, buttonValue } = c;
-  // const state = deriveState((previousState) => { });
+  const { deriveState, buttonValue } = c;
+  const state = deriveState((previousState) => { });
 
-  // const correctQ4Answer = state.openaiResponse?.true_false_questions[1].correct_answer;
-  // if (buttonValue === correctQ4Answer) {
-  //   state.points += 100;
-  // }
+  const correctQ4Answer = state.openaiResponse?.true_false_questions[1].correct_answer;
+  if (buttonValue === correctQ4Answer) {
+    state.points += 100;
+  }
   return c.res({
     image: (
       <div
@@ -843,7 +843,7 @@ app.frame('/points', (c) => {
             weight="700"
             color="white"
           >
-            {`+400`}
+            {`+${state.points}`}
           </Text>
         </div>
 
@@ -865,7 +865,7 @@ app.frame('/points', (c) => {
             weight="400"
             color="white"
           >
-            {`You're now at 400 points for the week!`}
+            {`You're now at ${state.points} points for the week!`}
           </Text>
         </div>
       </div>
