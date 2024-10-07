@@ -673,14 +673,14 @@ app.frame('/q2', (c) => {
 
 app.frame('/q3', (c) => {
   const answerOptions = ['True', 'False'];
-  const { deriveState, buttonValue } = c;
+  const { deriveState } = c;
   const state = deriveState((previousState) => { });
   const q3 = state.openaiResponse?.true_false_questions[0].question;
 
-  const correctQ2Answer = state.openaiResponse?.multiple_choice_questions[1].correct_answer;
-  if (buttonValue === correctQ2Answer) {
-    state.points += 100;
-  }
+  // const correctQ2Answer = state.openaiResponse?.multiple_choice_questions[1].correct_answer;
+  // if (buttonValue === correctQ2Answer) {
+  //   state.points += 100;
+  // }
 
   return c.res({
     action: '/q4',
@@ -812,13 +812,13 @@ app.frame('/q4', (c) => {
 })
 
 app.frame('/points', (c) => {
-  const { deriveState, buttonValue } = c;
-  const state = deriveState((previousState) => { });
+  // const { deriveState, buttonValue } = c;
+  // const state = deriveState((previousState) => { });
 
-  const correctQ4Answer = state.openaiResponse?.true_false_questions[1].correct_answer;
-  if (buttonValue === correctQ4Answer) {
-    state.points += 100;
-  }
+  // const correctQ4Answer = state.openaiResponse?.true_false_questions[1].correct_answer;
+  // if (buttonValue === correctQ4Answer) {
+  //   state.points += 100;
+  // }
   return c.res({
     image: (
       <div
@@ -843,7 +843,7 @@ app.frame('/points', (c) => {
             weight="700"
             color="white"
           >
-            {`+${state.points}`}
+            {`+400`}
           </Text>
         </div>
 
@@ -865,7 +865,7 @@ app.frame('/points', (c) => {
             weight="400"
             color="white"
           >
-            {`You're now at ${state.points} points for the week!`}
+            {`You're now at 400 points for the week!`}
           </Text>
         </div>
       </div>
