@@ -538,18 +538,17 @@ app.frame('/q1', (c) => {
       </div>
     ),
     intents: [
-      <Button value={answers[0]}>a</Button>,
-      <Button value={answers[1]}>b</Button>,
-      <Button value={answers[2]}>c</Button>,
-      <Button value={answers[3]}>d</Button>,
+      <Button >a</Button>,
+      <Button >b</Button>,
+      <Button >c</Button>,
+      <Button >d</Button>,
     ],
   })
 })
 
 app.frame('/q2', (c) => {
-  const { deriveState, buttonValue } = c;
-  const state = deriveState((previousState) => {
-  });
+  const { deriveState } = c;
+  const state = deriveState(() => {});
 
   const q2 = state.openaiResponse?.multiple_choice_questions[1].question;
   const answers = state.openaiResponse?.multiple_choice_questions[1].answers;
@@ -664,10 +663,10 @@ app.frame('/q2', (c) => {
       </div>
     ),
     intents: [
-      <Button value={answers[0]}>a</Button>,
-      <Button value={answers[1]}>b</Button>,
-      <Button value={answers[2]}>c</Button>,
-      <Button value={answers[3]}>d</Button>,
+      <Button>a</Button>,
+      <Button>b</Button>,
+      <Button>c</Button>,
+      <Button>d</Button>,
     ],
   })
 })
