@@ -914,7 +914,7 @@ app.frame('/streak', (c) => {
       </div>
     ),
     intents: [
-      <Button.Link href={`https://lingo-caster.vercel.app/nfts`}>Mint today's NFT</Button.Link>,
+      <Button.Link href={`http://localhost:3000/nfts`}>Mint today's NFT</Button.Link>,
       <Button action="/bet">Next</Button>,
     ],
   })
@@ -1018,8 +1018,8 @@ app.frame('/bet', (c) => {
       </div>
     ),
     intents: [
-      <Button.Link href={`https://lingo-caster.vercel.app/bet?interactor=${interactor}`}>Bet on Myself</Button.Link>,
-      <Button.Link href={`https://lingo-caster.vercel.app/bet?interactor=${interactor}`}>Bet a Friend</Button.Link>,
+      <Button.Link href={`http://localhost:3000/bet?interactor=${interactor}`}>Bet on Myself</Button.Link>,
+      <Button.Link href={`http://localhost:3000/bet?interactor=${interactor}`}>Bet a Friend</Button.Link>,
     ],
   })
 })
