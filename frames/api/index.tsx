@@ -5,11 +5,13 @@ import { neynar as neynarHub } from 'frog/hubs'
 import { neynar } from "frog/middlewares"
 import { createSystem } from 'frog/ui'
 import { handle } from 'frog/vercel'
+import { createClient } from '@supabase/supabase-js';
 import OpenAI from "openai"
 import dotenv from 'dotenv'
 dotenv.config()
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, dangerouslyAllowBrowser: true });
+const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KEY!);
 
 const openAIPayload = `
 You're a translation bot that helps people learn Spanish, similar to Duolingo. In ONLY JSON, respond with:
@@ -423,13 +425,28 @@ app.frame('/quiztime', (c) => {
   })
 })
 
-app.frame('/q1', (c) => {
+app.frame('/q1', async (c) => {
+  const interactorUsername = c.var.interactor?.username;
   const { deriveState } = c;
   const state = deriveState((previousState) => {
   });
 
   const q1 = state.openaiResponse?.multiple_choice_questions[0].question;
   const answers = state.openaiResponse?.multiple_choice_questions[0].answers;
+
+  const { data: existingUser } = await supabase
+    .from('radar')
+    .select('username')
+    .eq('username', interactorUsername)
+    .single();
+
+  if (!existingUser) {
+    await supabase
+      .from('radar')
+      .insert([
+        { username: interactorUsername }
+      ]);
+  }
 
   return c.res({
     action: '/q2',
