@@ -1,5 +1,5 @@
 import { serveStatic } from '@hono/node-server/serve-static'
-import { Button, Frog } from 'frog'
+import { Button, Frog, TextInput } from 'frog'
 import { devtools } from 'frog/dev'
 import { neynar as neynarHub } from 'frog/hubs'
 import { neynar } from "frog/middlewares"
@@ -935,14 +935,14 @@ app.frame('/streak', async (c) => {
             weight="500"
             color="red"
           >
-            {`You're on a ${count} day streak!`}
+            {`${count} day streak! Mint your NFT:`}
           </Text>
         </div>
       </div>
     ),
     intents: [
-      <Button.Link href={`http://localhost:3000/nfts`}>Mint today's NFT</Button.Link>,
-      <Button action="/bet">Next</Button>,
+      <TextInput placeholder="Address..." />,
+      <Button action="/bet">Mint / Skip</Button>,
     ],
   })
 })
