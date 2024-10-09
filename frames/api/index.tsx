@@ -830,7 +830,7 @@ app.frame('/q4', (c) => {
   })
 })
 
-app.frame('/points', async (c) => {
+app.frame('/points', (c) => {
   const { deriveState, buttonValue } = c;
   const state = deriveState((previousState) => { });
 
@@ -838,8 +838,6 @@ app.frame('/points', async (c) => {
   if (buttonValue === correctQ4Answer) {
     state.points += 100;
   }
-
-  
 
   return c.res({
     image: (
