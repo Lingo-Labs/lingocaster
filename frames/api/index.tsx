@@ -60,6 +60,7 @@ const { Image, Text, vars } = createSystem({
 type State = {
   openaiResponse: any | null;
   points: number;
+  streak: number;
 }
 
 // Initialize the Frog app with the State type and initial state
@@ -71,7 +72,8 @@ export const app = new Frog<{ State: State }>({
   basePath: "/api",
   initialState: {
     openaiResponse: null,
-    points: 0
+    points: 0,
+    streak: 1
   }
 }).use(
   neynar({
@@ -828,7 +830,7 @@ app.frame('/q4', (c) => {
   })
 })
 
-app.frame('/points', (c) => {
+app.frame('/points', async (c) => {
   const { deriveState, buttonValue } = c;
   const state = deriveState((previousState) => { });
 
@@ -836,6 +838,16 @@ app.frame('/points', (c) => {
   if (buttonValue === correctQ4Answer) {
     state.points += 100;
   }
+
+  const interactorUsername = c.var.interactor?.username;
+  const { data } = await supabase
+    .from('streak')
+    .select('streak')
+    .eq('username', interactorUsername)
+    .single();
+
+  state.streak = data?.streak ? data.streak + 1 : 1;
+
   return c.res({
     image: (
       <div
@@ -893,17 +905,9 @@ app.frame('/points', (c) => {
   })
 })
 
-app.frame('/streak', async (c) => {
-  const interactorUsername = c.var.interactor?.username;
-  // Fetch streak from supabase
-  const { data } = await supabase
-    .from('streak')
-    .select('streak')
-    .eq('username', interactorUsername)
-    .single();
-
-  const count = data?.streak ? data.streak + 1 : 1;
-  
+app.frame('/streak', (c) => {
+  const { deriveState } = c;
+  const state = deriveState((previousState) => { });
   return c.res({
     image: (
       <div
@@ -923,7 +927,7 @@ app.frame('/streak', async (c) => {
           width: '100%',
           overflow: 'hidden'
         }}>
-          <Image src={`/${count}.png`} />
+          <Image src={`/${state.streak}.png`} />
         </div>
 
         {/* Subtitle */}
@@ -934,7 +938,7 @@ app.frame('/streak', async (c) => {
             weight="500"
             color="red"
           >
-            {`You're on a ${count} day streak!`}
+            {`You're on a ${state.streak} day streak!`}
           </Text>
         </div>
       </div>
