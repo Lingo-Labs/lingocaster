@@ -893,8 +893,17 @@ app.frame('/points', (c) => {
   })
 })
 
-app.frame('/streak', (c) => {
-  const num = 1;
+app.frame('/streak', async (c) => {
+  const interactorUsername = c.var.interactor?.username;
+  // Fetch streak from supabase
+  const { data } = await supabase
+    .from('streak')
+    .select('streak')
+    .eq('username', interactorUsername)
+    .single();
+
+  const count = data?.streak ? data.streak + 1 : 1;
+  
   return c.res({
     image: (
       <div
@@ -914,7 +923,7 @@ app.frame('/streak', (c) => {
           width: '100%',
           overflow: 'hidden'
         }}>
-          <Image src={`/${num}.png`} />
+          <Image src={`/${count}.png`} />
         </div>
 
         {/* Subtitle */}
@@ -925,7 +934,7 @@ app.frame('/streak', (c) => {
             weight="500"
             color="red"
           >
-            {`You're on a ${num} day streak!`}
+            {`You're on a ${count} day streak!`}
           </Text>
         </div>
       </div>
