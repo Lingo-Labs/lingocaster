@@ -947,8 +947,20 @@ app.frame('/streak', async (c) => {
   })
 })
 
-app.frame('/bet', (c) => {
+app.frame('/bet', async (c) => {
+  const { inputText } = c;
   const interactor = c.var.interactor?.username;
+
+  if (inputText && /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(inputText)) {
+    await fetch('https://lingo-caster.vercel.app/api/mint-nft', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ recipient: inputText }),
+    });
+  }
+
   return c.res({
     image: (
       <div
