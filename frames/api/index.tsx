@@ -839,14 +839,7 @@ app.frame('/points', async (c) => {
     state.points += 100;
   }
 
-  const interactorUsername = c.var.interactor?.username;
-  const { data } = await supabase
-    .from('streak')
-    .select('streak')
-    .eq('username', interactorUsername)
-    .single();
-
-  state.streak = data?.streak ? data.streak + 1 : 1;
+  
 
   return c.res({
     image: (
@@ -905,9 +898,15 @@ app.frame('/points', async (c) => {
   })
 })
 
-app.frame('/streak', (c) => {
-  const { deriveState } = c;
-  const state = deriveState((previousState) => { });
+app.frame('/streak', async (c) => {
+  const interactorUsername = c.var.interactor?.username;
+  const { data } = await supabase
+    .from('radar')
+    .select('streak')
+    .eq('username', interactorUsername)
+    .single();
+
+  const count = data?.streak ? data.streak + 1 : 1;
   return c.res({
     image: (
       <div
@@ -927,7 +926,7 @@ app.frame('/streak', (c) => {
           width: '100%',
           overflow: 'hidden'
         }}>
-          <Image src={`/${state.streak}.png`} />
+          <Image src={`/${count}.png`} />
         </div>
 
         {/* Subtitle */}
@@ -938,7 +937,7 @@ app.frame('/streak', (c) => {
             weight="500"
             color="red"
           >
-            {`You're on a ${state.streak} day streak!`}
+            {`You're on a ${count} day streak!`}
           </Text>
         </div>
       </div>
