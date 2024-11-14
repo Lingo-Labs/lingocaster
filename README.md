@@ -6,7 +6,7 @@ Warpcast: https://warpcast.com/lingocaster
 - 🥈 2nd place winner of the inaugural Global PYUSD Portal Hackathon!
 - 💰 Won $10k + sponsored trip to demo Lingocaster at the Solana Hong Kong Hacker House.
 
-<img width="1440" alt="Screenshot 2024-09-15 at 8 45 46 PM" src="https://github.com/user-attachments/assets/340c3276-a127-4a00-9f0e-6f57deefca0c">
+<img width="1293" alt="Lingocaster Thumbnail" src="https://github.com/user-attachments/assets/7226dced-8968-40a8-9659-af2939a07137">
 
 # 🗣️ About
 Lingocaster is a language learning game built on Farcaster. Learn a new language, earn rewards with streaks, & challenge friends in PYUSD! The game itself is built using Farcaster frames triggered by this [cast action](https://warpcast.com/~/add-cast-action?url=https://lingocaster.vercel.app/api/action). The AI translates a post and creates quiz questions for users, who can then play for daily points and compete on the leaderboard. With PYUSD, users can bet on their own streak, against a friend, or purchase in-game rewards.  
@@ -41,12 +41,13 @@ The dashboard is where you can see the amount of each token you hold!
 ## NFTs
 The NFTs page show the NFTs you've collected, which represent streaks and milestones you've achieved!
 
-<img width="1440" alt="Screenshot 2024-09-16 at 11 44 22 AM" src="https://github.com/user-attachments/assets/2fcf75bb-2355-41c2-aa7e-c9fab07c5b66">
+<img width="1440" alt="NFTs" src="https://github.com/user-attachments/assets/8d6e794f-b127-45f0-b9ce-fe1c2faf5fc9">
+
 
 ## Game Store
 The game store is where you can use PYUSD to purchase in-game rewards like streak freezes, ad removal, double points, and more!
 
-<img width="1440" alt="Screenshot 2024-09-16 at 11 44 15 AM" src="https://github.com/user-attachments/assets/c961a634-c069-4c6b-9eaa-9da06ec5e712">
+<img width="1440" alt="Game Store" src="https://github.com/user-attachments/assets/0a7f8bf2-2387-4ea6-b60e-0b33b7f5b628">
 
 ## Leaderboard
 The leaderboard shows the top players by weekly points.
